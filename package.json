@@ -1,0 +1,23 @@
+{
+  "name": "tfg",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byRuly/TFG.git"
+  },
+  "author": "Raúl Vizuete Sánchez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/byRuly/TFG/issues"
+  },
+  "homepage": "https://github.com/byRuly/TFG#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "path": "^0.12.7"
+  }
+}
