@@ -18,6 +18,3 @@ app.listen(port,()=>{
     console.log("Server cannot be started: "+e);
     process.exit(1);
 });
-
-
-
