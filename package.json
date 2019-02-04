@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/byRuly/TFG#readme",
   "dependencies": {
-    "express": "^4.16.4",
-    "path": "^0.12.7"
+    "express": "^4.16.4"
   }
 }
