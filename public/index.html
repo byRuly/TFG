@@ -1,6 +1,34 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <h1>Hola</h1>
-    </head>
+<html ng-app="TrabajoFinGrado">
+
+<head>
+    <title>Sports Predict</title>
+    <link rel="icon" type="image/x-icon" href="https://github.com/favicon.ico" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/bower_components/materialize/dist/css/materialize.min.css" type="text/css" />
+    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="/bower_components/materialize/dist/js/materialize.min.js"></script>
+
+    
+    <!--APP-->
+    <script type="text/javascript" src="tfg.js"></script>
+    
+ 
+     <!--SPORTS SCRIPTS-->
+    <script type="text/javascript" src="/tennis-ctrl.js"></script>
+    <script type="text/javascript" src="/basketball-ctrl.js"></script>
+    <script type="text/javascript" src="/soccer-ctrl.js"></script>
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <div ng-view>
+
+    </div>
+</body>
+
 </html>

@@ -1,0 +1,64 @@
+<header>
+    <h3 style="text-align:center">Tenis</h3>
+</header>
+<main>
+    <div ng-controller="TennisCtrl">
+        <div class="container">
+            <table class="highlight">
+                <thead>
+                    <tr>
+                        <th style="text-align:center" width="14%">Variable</th>
+                        <th style="text-align:center" width="14%">Peso</th>
+                        <th style="text-align:center" width="14%">Peso Recomendado</th>
+                        <th style="text-align:center" width="14%">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input class="form-control" ng-model="newData.variable" style="text-align:center"/></td>
+                        <td><input class="form-control" ng-model="newData.weight" style="text-align:center"/></td>
+                        <td><input class="form-control" ng-model="newData.recommendedweight" style="text-align:center"/></td>
+                            
+                        <td style="text-align:center"><button class="btn waves-effect waves-light blue darken-3" ng-click="addData()"><i class="material-icons">add</i></button></td>
+                    </tr>
+                    
+                    <tr ng-repeat="dataUnit in data">
+                        <td style="text-align:center">{{dataUnit.variable}}</td>
+                        <td style="text-align:center">{{dataUnit.weight}}<td>
+                        <td style="text-align:center">{{dataUnit.recommendedweight}}</td>
+                            
+                        <td style="text-align:center">
+                            <!--
+                            <a href="#!/esl/{{dataUnit.country}}/{{dataUnit.year}}" class="btn-floating waves-effect waves-light yellow darken-3"><i class="material-icons">edit</i></a>
+                            -->
+                            <button class="btn-floating waves-effect waves-light red" ng-click="deleteData(dataUnit)"><i class="material-icons">delete</i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+                
+            <div class="container">
+                <div class="row">
+                    <div class="col s3">
+                        <button class="btn waves-effect waves-light green darken-1" ng-click="loadPresets()">Reload<i class="material-icons left">recent_actors</i></button>
+                    </div>
+                    <div class="col s3">
+                        <button class="btn waves-effect waves-light red darken-2" ng-click="deleteAllData()">Clear<i class="material-icons left">warning</i></button>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+        <div class="modal-footer">
+            <a href="" class="modal-action modal-close waves-effect waves-green btn-flat">Set</a>
+        </div>
+        </div>
+
+    </div>
+</main>
