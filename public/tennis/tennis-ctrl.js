@@ -105,6 +105,7 @@ angular.module("TrabajoFinGrado").
 
     refresh();
 
+/*
     $(document).ready(function() {
         $('.modal').modal({
             ready: function(modal, trigger) {
@@ -115,5 +116,5 @@ angular.module("TrabajoFinGrado").
             }
         });
         $(".button-collapse").sideNav();
-    });
+    });*/
 }]);
