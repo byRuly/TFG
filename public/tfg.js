@@ -1,3 +1,5 @@
+/*global angular*/
+
 angular.module("TrabajoFinGrado", ["ngRoute"]).config(function($routeProvider) {
     
     $routeProvider

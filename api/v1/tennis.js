@@ -21,22 +21,26 @@ app.get(BASE_API_PATH + "/tennis/loadPresets",function(request, response) {
               var tennisvariables = [{
                 "variable": "first serve percentage",
                 "weight": "25",
-                "recommendedweight": "60"
+                "recommendedweight": "60",
+                "include":"yes"
             },
             {
                 "variable": "second serve percentage",
                 "weight": "25",
-                "recommendedweight": "80"
+                "recommendedweight": "80",
+                "include":"yes"
             },
             {
                 "variable": "average serve speed",
                 "weight": "25",
-                "recommendedweight": "35"
+                "recommendedweight": "35",
+                "include":"yes"
             },
             {
                 "variable": "unforced errors per game",
                 "weight": "25",
-                "recommendedweight": "90"
+                "recommendedweight": "90",
+                "include":"no"
             }];
         
     dbTennis.insert(tennisvariables);

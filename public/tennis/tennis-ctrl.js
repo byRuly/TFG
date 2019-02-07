@@ -1,6 +1,5 @@
-/* global angular */
-/* global Materialize */
-/* global $ */
+/*global angular*/
+/*global M*/
 
 var aux;
 
@@ -8,7 +7,9 @@ angular.module("TrabajoFinGrado").
     controller("TennisCtrl", ["$scope", "$http", function($scope, $http) {
         console.log("Controller initialized");
 
+
     $scope.data = {};
+
 
     var refresh = $scope.refresh = function() {
 
@@ -22,41 +23,38 @@ angular.module("TrabajoFinGrado").
                 switch (response.status) {
                     case 404:
                         $scope.data = {};
-                        Materialize.toast('<i class="material-icons">error_outline</i> No data found!', 4000);
+                        M.toast({html: '<i class="material-icons">error_outline</i> No hay variables definidas'},4000);
                         break;
                     default:
-                        Materialize.toast('<i class="material-icons">error_outline</i> Error getting data!', 4000);
+                        M.toast({html: '<i class="material-icons">error_outline</i> Error obteniendo variables'},4000);
                         break;
                 }
                 aux=0;
             });
     };
 
+
     $scope.addData = function() {
         $http
             .post("../api/v1/tennis", $scope.newData)
             .then(function(response) {
                 console.log("Data added!");
-                Materialize.toast('<i class="material-icons">done</i> ' + $scope.newData.variable + ' has been added succesfully!', 4000);
+                M.toast({html: '<i class="material-icons">done</i> ' + $scope.newData.variable + ' has been added succesfully!'},4000);
+                //Materialize.toast('<i class="material-icons">done</i> ' + $scope.newData.variable + ' has been added succesfully!', 4000);
                 refresh();
             }, function(response) {
                 switch (response.status) {
                     case 409:
-                        Materialize.toast('<i class="material-icons">error_outline</i> This element already exist!', 4000);
+                        M.toast({html: '<i class="material-icons">error_outline</i> This element already exist!'},4000);
+                        //Materialize.toast('<i class="material-icons">error_outline</i> This element already exist!', 4000);
                         break;
                     default:
-                        Materialize.toast('<i class="material-icons">error_outline</i> Error getting data!', 4000);
+                        M.toast({html: '<i class="material-icons">error_outline</i> Error getting data!'},4000);
+                        //Materialize.toast('<i class="material-icons">error_outline</i> Error getting data!', 4000);
                         break;
                 }
             });
     };
-
-    /*$scope.editDataModal = function(data) {
-        data["oldCountry"] = data["country"];
-        data["oldYear"] = data["year"];
-        $scope.editDataUnit = data;
-        $('#editModal').modal('open');
-    };*/
 
     
     $scope.deleteData = function(data) {
@@ -64,10 +62,12 @@ angular.module("TrabajoFinGrado").
             .delete("../api/v1/tennis/" + data.variable)
             .then(function(response) {
                 console.log("Data " + data.variable + " deleted!");
-                Materialize.toast('<i class="material-icons">done</i> ' + data.variable + ' has been deleted succesfully!', 4000);
+                M.toast({html: '<i class="material-icons">done</i> ' + data.variable + ' ha sido borrada correctamente'},4000);
+                //Materialize.toast('<i class="material-icons">done</i> ' + data.variable + ' has been deleted succesfully!', 4000);
                 refresh();
             }, function(response) {
-                Materialize.toast('<i class="material-icons">error_outline</i> Error deleting data!', 4000);
+                M.toast({html: '<i class="material-icons">error_outline</i> Error borrando la variable'},4000);
+                //Materialize.toast('<i class="material-icons">error_outline</i> Error deleting data!', 4000);
             });
     };
 
@@ -76,10 +76,12 @@ angular.module("TrabajoFinGrado").
             .delete("../api/v1/tennis")
             .then(function(response) {
                 console.log("All data deleted!");
-                Materialize.toast('<i class="material-icons">done</i> All data has been deleted succesfully!', 4000);
+                M.toast({html: '<i class="material-icons">done</i> Todas las variables se han borrado con éxito'},4000);
+                //Materialize.toast('<i class="material-icons">done</i> All data has been deleted succesfully!', 4000);
                 refresh();
             }, function(response) {
-                Materialize.toast('<i class="material-icons">error_outline</i> Error deleting all data!', 4000);
+                M.toast({html: '<i class="material-icons">error_outline</i> Error borrando las variables'},4000);
+                //Materialize.toast('<i class="material-icons">error_outline</i> Error deleting all data!', 4000);
             });
     };
 
@@ -91,16 +93,40 @@ angular.module("TrabajoFinGrado").
                 .get("../api/v1/tennis/loadPresets")
                 .then(function(response) {
                     console.log("Initial data loaded");
-                    Materialize.toast('<i class="material-icons">done</i> Loaded inital data succesfully!', 4000);
+                    M.toast({html: '<i class="material-icons">done</i> Variables por defecto cargadas correctamente'},4000);
+                    //Materialize.toast('<i class="material-icons">done</i> Loaded inital data succesfully!', 4000);
                     refresh();
                 }, function(response) {
-                    Materialize.toast('<i class="material-icons">error_outline</i> Error adding initial data!', 4000);
+                    M.toast({html: '<i class="material-icons">error_outline</i> Error cargando las variables por defecto'},4000);
+                    //Materialize.toast('<i class="material-icons">error_outline</i> Error adding initial data!', 4000);
                 });
         }
         else {
-            Materialize.toast('<i class="material-icons">error_outline</i> There are already data in the DB', 4000);
-            console.log("List must be empty!");
+            M.toast({html: '<i class="material-icons">error_outline</i> Ya hay variables en la base de datos'},4000);
+            //Materialize.toast('<i class="material-icons">error_outline</i> There are already data in the DB', 4000);
+            console.log("La lista de variables debe estar vacia");
         }
+    };
+    
+    //TODO
+     $scope.editDataAdd = function(data) {
+
+        var oldVariable = data.variable;
+        delete data._id;
+        delete data.oldVariable;
+
+        $http
+            .put("../api/v1/tennis/" + data.variable, data)
+            .then(function(response) {
+                console.log("Variable " + data.variable + " añadida!");
+                M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' añadida correctamente'},4000);
+                //Materialize.toast('<i class="material-icons">done</i> ' + oldCountry + ' has been edited succesfully!', 4000);
+                refresh();
+            }, function(response) {
+                M.toast({html: '<i class="material-icons">error_outline</i> Error añadiendo variable'},4000);
+                //Materialize.toast('<i class="material-icons">error_outline</i> Error editing data!', 4000);
+                refresh();
+            });
     };
 
     refresh();
