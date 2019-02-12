@@ -11,6 +11,7 @@ angular.module("TrabajoFinGrado").
     $scope.data = {};
 
 
+    /*
     var refresh = $scope.refresh = function() {
 
         $http
@@ -31,6 +32,77 @@ angular.module("TrabajoFinGrado").
                 }
                 aux=0;
             });
+    };*/
+    
+    var refresh = $scope.refresh = function(){
+        
+        $http
+            .get("../api/v1/tennis?include=yes")
+            .then(function(response) {
+                console.log("Data received:" + JSON.stringify(response.data, null, 2));
+                $scope.data = response.data;
+                aux =1;
+            }, function(response) {
+                switch (response.status) {
+                    case 404:
+                        $scope.data = {};
+                        M.toast({html: '<i class="material-icons">error_outline</i> No hay variables definidas'},4000);
+                        break;
+                    default:
+                        M.toast({html: '<i class="material-icons">error_outline</i> Error obteniendo variables'},4000);
+                        break;
+                }
+                aux=0;
+            });
+            refresh2();
+    };
+    
+    
+    var refresh2 = $scope.refresh2 = function(){
+        
+        $http
+            .get("../api/v1/tennis")
+            .then(function(response) {
+                console.log("Data received:" + JSON.stringify(response.data, null, 2));
+                $scope.allData = response.data;
+                //aux =1;
+            }, function(response) {
+                switch (response.status) {
+                    case 404:
+                        $scope.allData = {};
+                        //M.toast({html: '<i class="material-icons">error_outline</i> No hay variables definidas'},4000);
+                        break;
+                    default:
+                        //M.toast({html: '<i class="material-icons">error_outline</i> Error obteniendo variables'},4000);
+                        break;
+                }
+                //aux=0;
+            });
+    };
+    
+    
+    $scope.updateNewRecWeight = function(query){
+        
+        if (query!=""){
+            $http
+                .get("../api/v1/tennis/" + query)
+                .then(function(response) {
+                    console.log("Data received:" + JSON.stringify(response.data, null, 2));
+                    $scope.dataToAdd = response.data;
+                    //aux =1;
+                }, function(response) {
+                    switch (response.status) {
+                        case 404:
+                            $scope.dataToAdd = {};
+                            //M.toast({html: '<i class="material-icons">error_outline</i> No hay variables definidas'},4000);
+                            break;
+                            default:
+                            //M.toast({html: '<i class="material-icons">error_outline</i> Error obteniendo variables'},4000);
+                            break;
+                }
+                //aux=0;
+            });
+        }
     };
 
 
@@ -108,24 +180,40 @@ angular.module("TrabajoFinGrado").
         }
     };
     
+    
     //TODO
      $scope.editDataAdd = function(data) {
 
         var oldVariable = data.variable;
+        data.recommendedweight = getRecWeight(data.variable);
+        console.log(data.recommendedweight);
+        data.include = "yes";
         delete data._id;
         delete data.oldVariable;
 
-        $http
+       $http
             .put("../api/v1/tennis/" + data.variable, data)
             .then(function(response) {
-                console.log("Variable " + data.variable + " añadida!");
-                M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' añadida correctamente'},4000);
+                console.log("Data " + data.variable + " edited!");
+                M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' has been edited succesfully!'},4000);
                 //Materialize.toast('<i class="material-icons">done</i> ' + oldCountry + ' has been edited succesfully!', 4000);
                 refresh();
             }, function(response) {
-                M.toast({html: '<i class="material-icons">error_outline</i> Error añadiendo variable'},4000);
+                M.toast({html: '<i class="material-icons">error_outline</i> Error editing data!'},4000);
                 //Materialize.toast('<i class="material-icons">error_outline</i> Error editing data!', 4000);
                 refresh();
+            });
+    };
+    
+    
+    //TODO
+    
+    var getRecWeight = $scope.getRecWeight = function(variable){
+        
+        $http
+            .get("../api/v1/tennis/" + variable)
+            .then(function(response){
+                return response.data.recommendedweight;
             });
     };
 

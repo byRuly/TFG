@@ -20,6 +20,10 @@ var dbTennis;
 var dbSoccer;
 var dbBasketball;
 
+app.use(bodyParser.json()); 
+app.use(helmet());
+app.use(cors());
+
 MongoClient.connect(mdbURL,{useNewUrlParser:true}, function(err,mlabs){
     
     if(err){

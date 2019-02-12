@@ -41,7 +41,14 @@ app.get(BASE_API_PATH + "/tennis/loadPresets",function(request, response) {
                 "weight": "25",
                 "recommendedweight": "90",
                 "include":"no"
-            }];
+            },
+            {
+                "variable": "earnings",
+                "weight": "25",
+                "recommendedweight": "10",
+                "include":"no"
+            }
+            ];
         
     dbTennis.insert(tennisvariables);
     response.sendStatus(200); //Ok
@@ -53,18 +60,8 @@ app.get(BASE_API_PATH + "/tennis/loadPresets",function(request, response) {
 });
 
 
-
 /*
-//Base GET
-app.get("/", function (request, response) {
-    console.log("INFO: Redirecting to /tennis");
-    response.redirect(301, BASE_API_PATH + "/tennis");
-});
-*/
-
-
-
-// GET Collection
+// GET Collection [OLD]
 
 app.get(BASE_API_PATH + "/tennis", function (request, response) {
     
@@ -83,11 +80,53 @@ app.get(BASE_API_PATH + "/tennis", function (request, response) {
             
             response.send(tennisvariables);
             console.log("INFO: Sending tennis variables: " + JSON.stringify(tennisvariables, 2, null));
-
             }
     });
 });
+*/
 
+
+// GET Collection [WITH INCLUDE]
+
+app.get(BASE_API_PATH + "/tennis", function (request, response) {
+    
+    console.log("INFO: New GET request to /tennis");
+    var include = request.query.include;
+
+    if (include) {
+        dbTennis.find({include:include}).toArray(function(err, tennisvariables) {    // .skip(offset).limit(limit)
+            if (err) {
+                console.error('ERROR from database');
+                response.sendStatus(500); // internal server error
+            }else {
+                if (tennisvariables.length === 0) {
+                response.sendStatus(404);
+                return;
+            }
+            
+            response.send(tennisvariables);
+            console.log("INFO: Sending tennis variables: " + JSON.stringify(tennisvariables, 2, null));
+            }
+        });
+        
+    } else {
+        dbTennis.find({}).toArray(function(err, tennisvariables) {
+        if (err) {
+            console.error('ERROR from database');
+            response.sendStatus(500); // internal server error
+            
+        } else {
+            if (tennisvariables.length === 0) {
+                response.sendStatus(404);
+                return;
+            }
+            
+            response.send(tennisvariables);
+            console.log("INFO: Sending tennis variables: " + JSON.stringify(tennisvariables, 2, null));
+            }
+        });
+    }
+});
 
 
 // GET Items by variable
@@ -121,7 +160,6 @@ app.get(BASE_API_PATH + "/tennis/:variable", function (request, response) {
 }
     
 }});
-
 
 
 //POST Collection
@@ -224,28 +262,34 @@ app.put(BASE_API_PATH + "/tennis/:variable", function (request, response) {
     if (!updatedVariable) {
         console.log("WARNING: New PUT request to /tennis/ without variable, sending 400...");
         response.sendStatus(400); // bad request
+    
     } else {
         console.log("INFO: New PUT request to /tennis/" + variable + " with data " + JSON.stringify(updatedVariable, 2, null));
-        if (!updatedVariable.variable || !updatedVariable.weight || !updatedVariable.recommendedweight) { //keep an eye on this
+        
+        if (!updatedVariable.variable || !updatedVariable.weight || !updatedVariable.recommendedweight || !updatedVariable.include 
+                || updatedVariable.variable !== variable) { //keep an eye on this
             console.log("WARNING: The variable " + JSON.stringify(updatedVariable, 2, null) + " is not well-formed, sending 400...");
             response.sendStatus(400); // bad request
+        
         } else {
-            dbTennis.find({variable:updatedVariable.country}).toArray(function (err, tennisvariables) {
+            dbTennis.find({variable:updatedVariable.variable}).toArray(function (err, tennisvariables) {
                 if (err) {
                     console.error('WARNING: Error getting data from DB');
                     response.sendStatus(500); // internal server error
+                
                 } else if (tennisvariables.length > 0) {
-                        dbTennis.update({variable: updatedVariable.variable}, updatedVariable);
-                        console.log("INFO: Modifying variable " + variable + " with data " + JSON.stringify(updatedVariable, 2, null));
-                        response.send(updatedVariable); // return the updated contact
-                    } else {
-                        console.log("WARNING: There are not any varibles named " + variable);
-                        response.sendStatus(404); // not found
-                    }
+                    dbTennis.update({variable: updatedVariable.variable}, updatedVariable);
+                    console.log("INFO: Modifying variable " + variable + " with data " + JSON.stringify(updatedVariable, 2, null));
+                    response.send(updatedVariable); // return the updated contact
+                    
+                } else {
+                    console.log("WARNING: Variable " + variable + "does not exist");
+                    response.sendStatus(404); // not found
                 }
-            )}
-        }
-    });
+            }
+        )}
+    }
+});
 
 
 
