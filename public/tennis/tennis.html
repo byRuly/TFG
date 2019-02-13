@@ -19,7 +19,8 @@
                         <td style="text-align:center">{{dataUnit.weight}}</td>
                         <td style="text-align:center">{{dataUnit.recommendedweight}}</td>
                         <td style="text-align:center">
-                            <button class="btn-floating waves-effect waves-light red" ng-click="deleteData(dataUnit)"><i class="material-icons">delete</i></button>
+                            <!--<button class="btn-floating waves-effect waves-light red" ng-click="deleteData(dataUnit)"><i class="material-icons">delete</i></button>-->
+                            <button class="btn-floating waves-effect waves-light red" ng-click="editDataDelete(dataUnit)"><i class="material-icons">delete</i></button>
                         </td>
                     </tr>
                     <!--OldADD
@@ -44,26 +45,31 @@
                         </td>
                         <td><input class="form-control" ng-model="newData.weight" style="text-align:center"/></td>
                         <td>
-                            <div style="text-align:center" ng-repeat="dataUnit in dataToAdd" ng-model="newData.recommendedweight">{{dataUnit.recommendedweight}}</div>
+                            <div style="text-align:center" ng-model="newData.recommendedweight">{{dataToAdd[0].recommendedweight}}</div>
+                            <!--<div style="text-align:center" ng-repeat="dataUnit in dataToAdd" ng-model="newData.recommendedweight">{{dataUnit.recommendedweight}}</div>-->
                         </td>
                         <td style="text-align:center"><button class="btn waves-effect waves-light blue darken-3" ng-click="editDataAdd(newData)"><i class="material-icons">add</i></button></td>
                     </tr>
+                    <!--
                     <tr>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                     </tr>
+                    -->
                 </tbody>
             </table>
                 
             <div class="container">
+                <div class="row"></div>
+                <div class="row"></div>
                 <div class="row">
-                    <div class="col s3">
-                        <button class="btn waves-effect waves-light green darken-1" ng-click="loadPresets()">Reload<i class="material-icons left">recent_actors</i></button>
+                    <div class="col s3 offset-s3">
+                        <button class="btn waves-effect waves-light green darken-1" ng-click="reset()">Default<i class="material-icons left">autorenew</i></button>
                     </div>
                     <div class="col s3">
-                        <button class="btn waves-effect waves-light red darken-2" ng-click="deleteAllData()">Clear<i class="material-icons left">warning</i></button>
+                        <button class="btn waves-effect waves-light red darken-2" ng-click="clear()">Clear<i class="material-icons left">delete_forever</i></button>
                     </div>
                 </div>
             </div>

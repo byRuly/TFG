@@ -6,19 +6,19 @@ exports.register = function(app, dbTennis, BASE_API_PATH, checkApiKeyFunction) {
 
 //Load Initial Data
 
-app.get(BASE_API_PATH + "/tennis/loadPresets",function(request, response) {
+app.get(BASE_API_PATH + "/tennis/loadDefault",function(request, response) {
     
     dbTennis.find({}).toArray(function(err,tennisvariables){
         
         if (err) {
-        console.error('WARNING: Error while getting presets from DB');
-        return 0;
-    }
+            console.error('WARNING: Error while getting default values from DB');
+            return 0;
+        }
     
-      if (tennisvariables.length === 0) {
-        console.log('INFO: Empty DB, loading presets');
+        if (tennisvariables.length === 0) {
+            console.log('INFO: Empty DB, loading default values');
 
-              var tennisvariables = [{
+            var tennisvariables = [{
                 "variable": "first serve percentage",
                 "weight": "25",
                 "recommendedweight": "60",
@@ -50,15 +50,70 @@ app.get(BASE_API_PATH + "/tennis/loadPresets",function(request, response) {
             }
             ];
         
-    dbTennis.insert(tennisvariables);
-    response.sendStatus(200); //Ok
-      } else {
-        console.log('INFO: DB has ' + tennisvariables.length + ' objects ');
-        response.sendStatus(200); //Ok
-    }
-});
+            dbTennis.insert(tennisvariables);
+            response.sendStatus(200); //Ok
+        } else {
+            console.log('INFO: DB has ' + tennisvariables.length + ' objects ');
+            response.sendStatus(200); //Ok
+        }
+    });
 });
 
+
+//Load Empty Data
+
+app.get(BASE_API_PATH + "/tennis/loadEmpty",function(request, response) {
+    
+    dbTennis.find({}).toArray(function(err,tennisvariables){
+        
+        if (err) {
+            console.error('WARNING: Error while getting default values (empty) from DB');
+            return 0;
+        }
+    
+        if (tennisvariables.length === 0) {
+            console.log('INFO: Empty DB, loading default values (empty)');
+
+            var tennisvariables = [{
+                "variable": "first serve percentage",
+                "weight": "25",
+                "recommendedweight": "60",
+                "include":"no"
+            },
+            {
+                "variable": "second serve percentage",
+                "weight": "25",
+                "recommendedweight": "80",
+                "include":"no"
+            },
+            {
+                "variable": "average serve speed",
+                "weight": "25",
+                "recommendedweight": "35",
+                "include":"no"
+            },
+            {
+                "variable": "unforced errors per game",
+                "weight": "25",
+                "recommendedweight": "90",
+                "include":"no"
+            },
+            {
+                "variable": "earnings",
+                "weight": "25",
+                "recommendedweight": "10",
+                "include":"no"
+            }
+            ];
+        
+            dbTennis.insert(tennisvariables);
+            response.sendStatus(200); //Ok
+        } else {
+            console.log('INFO: DB has ' + tennisvariables.length + ' objects ');
+            response.sendStatus(200); //Ok
+        }
+    });
+});
 
 /*
 // GET Collection [OLD]

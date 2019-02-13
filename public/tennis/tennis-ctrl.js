@@ -157,12 +157,13 @@ angular.module("TrabajoFinGrado").
             });
     };
 
-    $scope.loadPresets = function() {
+    
+    var loadDefault = $scope.loadDefault = function() {
         //refresh();
         if (//$scope.data.length == -1
                 aux==0) {
             $http
-                .get("../api/v1/tennis/loadPresets")
+                .get("../api/v1/tennis/loadDefault")
                 .then(function(response) {
                     console.log("Initial data loaded");
                     M.toast({html: '<i class="material-icons">done</i> Variables por defecto cargadas correctamente'},4000);
@@ -181,42 +182,106 @@ angular.module("TrabajoFinGrado").
     };
     
     
-    //TODO
-     $scope.editDataAdd = function(data) {
+    var loadEmpty = $scope.loadEmpty = function() {
+        //refresh();
+        if (//$scope.data.length == -1
+                aux==0) {
+            $http
+                .get("../api/v1/tennis/loadEmpty")
+                .then(function(response) {
+                    console.log("Initial data loaded");
+                    M.toast({html: '<i class="material-icons">done</i> Variables por defecto cargadas correctamente'},4000);
+                    //Materialize.toast('<i class="material-icons">done</i> Loaded inital data succesfully!', 4000);
+                    refresh();
+                }, function(response) {
+                    M.toast({html: '<i class="material-icons">error_outline</i> Error cargando las variables por defecto'},4000);
+                    //Materialize.toast('<i class="material-icons">error_outline</i> Error adding initial data!', 4000);
+                });
+        }
+        else {
+            M.toast({html: '<i class="material-icons">error_outline</i> Ya hay variables en la base de datos'},4000);
+            //Materialize.toast('<i class="material-icons">error_outline</i> There are already data in the DB', 4000);
+            console.log("La lista de variables debe estar vacia");
+        }
+    };
+    
+    
+    $scope.editDataAdd = function(data) {
 
         var oldVariable = data.variable;
-        data.recommendedweight = getRecWeight(data.variable);
-        console.log(data.recommendedweight);
+        data.recommendedweight = $scope.dataToAdd[0].recommendedweight;
         data.include = "yes";
         delete data._id;
         delete data.oldVariable;
 
-       $http
+        $http
             .put("../api/v1/tennis/" + data.variable, data)
             .then(function(response) {
                 console.log("Data " + data.variable + " edited!");
-                M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' has been edited succesfully!'},4000);
+                M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' has been added succesfully!'},4000);
                 //Materialize.toast('<i class="material-icons">done</i> ' + oldCountry + ' has been edited succesfully!', 4000);
                 refresh();
             }, function(response) {
-                M.toast({html: '<i class="material-icons">error_outline</i> Error editing data!'},4000);
+                M.toast({html: '<i class="material-icons">error_outline</i> Error adding data!'},4000);
                 //Materialize.toast('<i class="material-icons">error_outline</i> Error editing data!', 4000);
                 refresh();
             });
     };
     
     
-    //TODO
-    
-    var getRecWeight = $scope.getRecWeight = function(variable){
-        
+    $scope.editDataDelete = function(data) {
+
+        var oldVariable = data.variable;
+        data.include = "no";
+        delete data._id;
+        delete data.oldVariable;
+
         $http
-            .get("../api/v1/tennis/" + variable)
-            .then(function(response){
-                return response.data.recommendedweight;
+            .put("../api/v1/tennis/" + data.variable, data)
+            .then(function(response) {
+                console.log("Data " + data.variable + " edited!");
+                M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' has been deleted succesfully!'},4000);
+                //Materialize.toast('<i class="material-icons">done</i> ' + oldCountry + ' has been edited succesfully!', 4000);
+                refresh();
+            }, function(response) {
+                M.toast({html: '<i class="material-icons">error_outline</i> Error deleting data!'},4000);
+                //Materialize.toast('<i class="material-icons">error_outline</i> Error editing data!', 4000);
+                refresh();
             });
     };
-
+    
+    
+    $scope.reset = function(){
+        $http
+            .delete("../api/v1/tennis")
+            .then(function(response) {
+                console.log("All data deleted!");
+                M.toast({html: '<i class="material-icons">done</i> Todas las variables se han borrado con éxito'},4000);
+                //Materialize.toast('<i class="material-icons">done</i> All data has been deleted succesfully!', 4000);
+                aux = 0;
+                loadDefault();
+            }, function(response) {
+                M.toast({html: '<i class="material-icons">error_outline</i> Error borrando las variables'},4000);
+                //Materialize.toast('<i class="material-icons">error_outline</i> Error deleting all data!', 4000);
+            });
+    };
+    
+    
+    $scope.clear = function(){
+        $http
+            .delete("../api/v1/tennis")
+            .then(function(response) {
+                console.log("All data deleted!");
+                M.toast({html: '<i class="material-icons">done</i> Todas las variables se han borrado con éxito'},4000);
+                //Materialize.toast('<i class="material-icons">done</i> All data has been deleted succesfully!', 4000);
+                aux = 0;
+                loadEmpty();
+            }, function(response) {
+                M.toast({html: '<i class="material-icons">error_outline</i> Error borrando las variables'},4000);
+                //Materialize.toast('<i class="material-icons">error_outline</i> Error deleting all data!', 4000);
+            });
+    };
+    
     refresh();
 
 /*
