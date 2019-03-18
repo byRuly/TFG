@@ -78,31 +78,36 @@ app.get(BASE_API_PATH + "/tennis/loadEmpty",function(request, response) {
                 "variable": "first serve percentage",
                 "weight": "25",
                 "recommendedweight": "60",
-                "include":"no"
+                "include":"no",
+                "positive":"1"
             },
             {
                 "variable": "second serve percentage",
                 "weight": "25",
                 "recommendedweight": "80",
-                "include":"no"
+                "include":"no",
+                "positive":"1"
             },
             {
                 "variable": "average serve speed",
                 "weight": "25",
                 "recommendedweight": "35",
-                "include":"no"
+                "include":"no",
+                "positive":"1"
             },
             {
                 "variable": "unforced errors per game",
                 "weight": "25",
                 "recommendedweight": "90",
-                "include":"no"
+                "include":"no",
+                "positive":"-1"
             },
             {
                 "variable": "earnings",
                 "weight": "25",
                 "recommendedweight": "10",
-                "include":"no"
+                "include":"no",
+                "positive":"1"
             }
             ];
         
