@@ -37,7 +37,7 @@ angular.module("TrabajoFinGrado").
     var refresh = $scope.refresh = function(){
         
         $http
-            .get("../api/v1/tennis?include=yes")
+            .get("../api/v1/tennis?include=1")
             .then(function(response) {
                 console.log("Data received:" + JSON.stringify(response.data, null, 2));
                 $scope.data = response.data;
@@ -210,7 +210,7 @@ angular.module("TrabajoFinGrado").
 
         var oldVariable = data.variable;
         data.recommendedweight = $scope.dataToAdd[0].recommendedweight;
-        data.include = "yes";
+        data.include = "1";
         delete data._id;
         delete data.oldVariable;
 
@@ -232,7 +232,7 @@ angular.module("TrabajoFinGrado").
     $scope.editDataDelete = function(data) {
 
         var oldVariable = data.variable;
-        data.include = "no";
+        data.include = "0";
         delete data._id;
         delete data.oldVariable;
 
