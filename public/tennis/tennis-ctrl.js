@@ -1,5 +1,6 @@
 /*global angular*/
 /*global M*/
+/*global $*/
 
 var aux;
 
@@ -284,14 +285,36 @@ angular.module("TrabajoFinGrado").
             });
     };
     
+    
+    $scope.editData = function(data){
+        
+        var oldVariable = data.variable;
+        delete data._id;
+        delete data.oldVariable;
+        
+        $http
+            .put("../api/v1/tennis/" + data.variable, data)
+            .then(function(response) {
+                console.log("Data " + data.variable + " edited!");
+                M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' ha sido borrada correctamente'},4000);
+                //Materialize.toast('<i class="material-icons">done</i> ' + oldCountry + ' has been edited succesfully!', 4000);
+                refresh();
+            }, function(response) {
+                M.toast({html: '<i class="material-icons">error_outline</i> Error borrando la variable'},4000);
+                //Materialize.toast('<i class="material-icons">error_outline</i> Error editing data!', 4000);
+                refresh();
+            });
+    };
+    
+    
     refresh();
 
 
-    /*
+    
     $(document).ready(function(){
         $('.modal').modal();
     });
-    */
+    
     
     
     

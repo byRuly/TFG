@@ -1,7 +1,7 @@
 <header>
     <!--<h3 style="text-align:center">Tenis</h3>-->
     <!--<img class="center-align" src="/resources/bannerbasket.jpg" style="align:center">-->
-    <img class="responsive-img" src="/resources/bannertennis.jpg" alt="tennisbanner">
+    <img class="responsive-img" src="/resources/bannertennnis.jpg" alt="tennisbanner">
 </header>
 <main>
     <div ng-controller="TennisCtrl">
@@ -27,19 +27,6 @@
                         </td>
                     </tr>
                     
-                    <!-- Just for demonstration-->
-                    <tr>
-                        <td style="text-align:center">Test Edicion</td>
-                        <td style="text-align:center">
-                            <input type="range" min="1" max="100" value="50">
-                        </td>
-                        <td style="text-align:center">Alto</td>
-                        <td style="text-align:center">
-                            <button class="btn-floating waves-effect waves-light yellow darken-1"><i class="material-icons">create</i></button>
-                            <button class="btn-floating waves-effect waves-light red"><i class="material-icons">delete</i></button>
-                        </td>
-                    </tr>
-                    
                     <!--OldADD
                     <tr>
                         <td><input class="form-control" ng-model="newData.variable" style="text-align:center"/></td>
@@ -48,7 +35,7 @@
                         <td style="text-align:center"><button class="btn waves-effect waves-light blue darken-3" ng-click="addData()"><i class="material-icons">add</i></button></td>
                     </tr>
                     -->
-                    <tr class="teal accent-1">
+                    <tr class="grey lighten-2">
                         <td>
                             <!--
                             <select>
@@ -90,23 +77,36 @@
                     </div>
                 </div>
             </div>
-    
         </div>
         
-        
-        <!--
-        <div class="modal-footer">
-            <a href="" class="modal-action modal-close waves-effect waves-green btn-flat">Set</a>
-        </div>
-        -->
-        
-        <div id="modal1" class="modal">
+        <div id="editModal" class="modal">
             <div class="modal-content">
-              <h4>Editar peso</h4>
-              <p>Prueba</p>
+                <table class="highlight">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center">Variable</th>
+                            <th style="text-align:center">Peso</th>
+                            <th style="text-align:center">Peso Recomendado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align:center">{{dataUnit.variable}}</td>
+                            <td><input class="form-control" ng-model="updatedVariable.weight" style="text-align:center;"/></td>
+                            <td style="text-align:center">{{dataUnit.recommendedweight}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Recuerda que la suma de los pesos debe ser 100</p>
             </div>
             <div class="modal-footer">
-              <a href="/#!/tennis/" class="modal-close waves-effect waves-green btn-flat">OK</a>
+                <button class="modal-close waves-effect waves-green btn-flat" ng-click="editData(updatedVariable)">
+                    OK
+                </button>
+                <button class="modal-close waves-effect waves-red btn-flat">
+                    Cancelar
+                </button>
+                <!--<a href="/#!/tennis/" class="modal-close waves-effect waves-green btn-flat">OK</a>-->
             </div>
         </div>
         
@@ -115,5 +115,5 @@
 
     
 
-    <!--</div>->
+    <!--</div>-->
 </main>
