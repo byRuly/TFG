@@ -6,7 +6,7 @@
 <main>
     <div ng-controller="TennisCtrl">
         <div class="container">
-            <table class="highlight">
+            <table class="highlight"><!--class="striped highlight"-->
                 <thead>
                     <tr>
                         <th style="text-align:center" width="14%">Variable</th>
@@ -21,6 +21,7 @@
                         <td style="text-align:center">{{dataUnit.weight}}</td>
                         <td style="text-align:center">{{dataUnit.recommendedweight}}</td>
                         <td style="text-align:center">
+                            <button class="btn-floating waves-effect waves-light yellow darken-1 modal-trigger" data-target="editModal"><i class="material-icons">create</i></button>
                             <!--<button class="btn-floating waves-effect waves-light red" ng-click="deleteData(dataUnit)"><i class="material-icons">delete</i></button>-->
                             <button class="btn-floating waves-effect waves-light red" ng-click="editDataDelete(dataUnit)"><i class="material-icons">delete</i></button>
                         </td>
@@ -47,7 +48,7 @@
                         <td style="text-align:center"><button class="btn waves-effect waves-light blue darken-3" ng-click="addData()"><i class="material-icons">add</i></button></td>
                     </tr>
                     -->
-                    <tr>
+                    <tr class="teal accent-1">
                         <td>
                             <!--
                             <select>
@@ -91,12 +92,28 @@
             </div>
     
         </div>
+        
+        
         <!--
         <div class="modal-footer">
             <a href="" class="modal-action modal-close waves-effect waves-green btn-flat">Set</a>
         </div>
         -->
+        
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+              <h4>Editar peso</h4>
+              <p>Prueba</p>
+            </div>
+            <div class="modal-footer">
+              <a href="/#!/tennis/" class="modal-close waves-effect waves-green btn-flat">OK</a>
+            </div>
         </div>
-
+        
+        
     </div>
+
+    
+
+    <!--</div>->
 </main>

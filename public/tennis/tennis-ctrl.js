@@ -66,6 +66,8 @@ angular.module("TrabajoFinGrado").
                 console.log("Data received:" + JSON.stringify(response.data, null, 2));
                 $scope.allData = response.data;
                 //aux =1;
+                //TODO probar que ocurre si consideras solo las que tienen include=0 en esta funcion
+                
             }, function(response) {
                 switch (response.status) {
                     case 404:
@@ -111,17 +113,17 @@ angular.module("TrabajoFinGrado").
             .post("../api/v1/tennis", $scope.newData)
             .then(function(response) {
                 console.log("Data added!");
-                M.toast({html: '<i class="material-icons">done</i> ' + $scope.newData.variable + ' has been added succesfully!'},4000);
+                M.toast({html: '<i class="material-icons">done</i> ' + $scope.newData.variable + ' ha sido añadida correctamente'},4000);
                 //Materialize.toast('<i class="material-icons">done</i> ' + $scope.newData.variable + ' has been added succesfully!', 4000);
                 refresh();
             }, function(response) {
                 switch (response.status) {
                     case 409:
-                        M.toast({html: '<i class="material-icons">error_outline</i> This element already exist!'},4000);
+                        M.toast({html: '<i class="material-icons">error_outline</i> Esta variable ya existe'},4000);
                         //Materialize.toast('<i class="material-icons">error_outline</i> This element already exist!', 4000);
                         break;
                     default:
-                        M.toast({html: '<i class="material-icons">error_outline</i> Error getting data!'},4000);
+                        M.toast({html: '<i class="material-icons">error_outline</i> Error obteniendo variables'},4000);
                         //Materialize.toast('<i class="material-icons">error_outline</i> Error getting data!', 4000);
                         break;
                 }
@@ -218,11 +220,11 @@ angular.module("TrabajoFinGrado").
             .put("../api/v1/tennis/" + data.variable, data)
             .then(function(response) {
                 console.log("Data " + data.variable + " edited!");
-                M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' has been added succesfully!'},4000);
+                M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' ha sido añadida correctamente'},4000);
                 //Materialize.toast('<i class="material-icons">done</i> ' + oldCountry + ' has been edited succesfully!', 4000);
                 refresh();
             }, function(response) {
-                M.toast({html: '<i class="material-icons">error_outline</i> Error adding data!'},4000);
+                M.toast({html: '<i class="material-icons">error_outline</i> Error añadiendo la variable'},4000);
                 //Materialize.toast('<i class="material-icons">error_outline</i> Error editing data!', 4000);
                 refresh();
             });
@@ -240,11 +242,11 @@ angular.module("TrabajoFinGrado").
             .put("../api/v1/tennis/" + data.variable, data)
             .then(function(response) {
                 console.log("Data " + data.variable + " edited!");
-                M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' has been deleted succesfully!'},4000);
+                M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' ha sido borrada correctamente'},4000);
                 //Materialize.toast('<i class="material-icons">done</i> ' + oldCountry + ' has been edited succesfully!', 4000);
                 refresh();
             }, function(response) {
-                M.toast({html: '<i class="material-icons">error_outline</i> Error deleting data!'},4000);
+                M.toast({html: '<i class="material-icons">error_outline</i> Error borrando la variable'},4000);
                 //Materialize.toast('<i class="material-icons">error_outline</i> Error editing data!', 4000);
                 refresh();
             });
@@ -284,6 +286,15 @@ angular.module("TrabajoFinGrado").
     
     refresh();
 
+
+    /*
+    $(document).ready(function(){
+        $('.modal').modal();
+    });
+    */
+    
+    
+    
 /*
     $(document).ready(function() {
         $('.modal').modal({
