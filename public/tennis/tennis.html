@@ -21,7 +21,8 @@
                         <td style="text-align:center">{{dataUnit.weight}}</td>
                         <td style="text-align:center">{{dataUnit.recommendedweight}}</td>
                         <td style="text-align:center">
-                            <button class="btn-floating waves-effect waves-light yellow darken-1 modal-trigger" data-target="editModal"><i class="material-icons">create</i></button>
+                            <button class="btn-floating waves-effect waves-light yellow darken-1 modal-trigger" ng-click="editDataModal(dataUnit)"><i class="material-icons">edit</i></button>
+                            <!--<button class="btn-floating waves-effect waves-light yellow darken-1 modal-trigger" data-target="editModal"><i class="material-icons">create</i></button>-->
                             <!--<button class="btn-floating waves-effect waves-light red" ng-click="deleteData(dataUnit)"><i class="material-icons">delete</i></button>-->
                             <button class="btn-floating waves-effect waves-light red" ng-click="editDataDelete(dataUnit)"><i class="material-icons">delete</i></button>
                         </td>
@@ -109,6 +110,43 @@
                 <!--<a href="/#!/tennis/" class="modal-close waves-effect waves-green btn-flat">OK</a>-->
             </div>
         </div>
+        
+        <div id="editModal2" class="modal">
+                <div class="modal-content">
+                    <h5>Editar {{editDataUnit.oldVariable}}</h5>
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                                <label class="col s6">Variable</label>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input class="form-control" type="text" id="variable" ng-model="editDataUnit.variable">
+                                    <!--<label for="variable">Variable</label>-->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s3">
+                                    <input class="form-control" type="text" id="weight" ng-model="editDataUnit.weight">
+                                    <label for="weight">Peso</label>
+                                </div>
+                                <div class="input-field col s3">
+                                    <input class="form-control" type="text" id="recommendedweight" ng-model="editDataUnit.recommendedweight">
+                                    <label for="recommendedweight">Peso Recomendado</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-close waves-effect waves-green btn-flat" ng-click="editData(editDataUnit)">
+                        OK
+                    </button>
+                    <button class="modal-close waves-effect waves-red btn-flat">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
         
         
     </div>

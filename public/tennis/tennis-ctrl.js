@@ -1,6 +1,7 @@
 /*global angular*/
 /*global M*/
 /*global $*/
+/*global $modal*/
 
 var aux;
 
@@ -296,7 +297,7 @@ angular.module("TrabajoFinGrado").
             .put("../api/v1/tennis/" + data.variable, data)
             .then(function(response) {
                 console.log("Data " + data.variable + " edited!");
-                M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' ha sido borrada correctamente'},4000);
+                M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' ha sido editada correctamente'},4000);
                 //Materialize.toast('<i class="material-icons">done</i> ' + oldCountry + ' has been edited succesfully!', 4000);
                 refresh();
             }, function(response) {
@@ -307,12 +308,33 @@ angular.module("TrabajoFinGrado").
     };
     
     
+    //c07666bd5b
+    $scope.editDataModal = function(data) {
+        data["oldVariable"] = data.variable;
+        $scope.editDataUnit = data;
+        $('#editModal2').modal('open');
+    };
+    
+    
     refresh();
 
 
-    
+    /*
     $(document).ready(function(){
         $('.modal').modal();
+    });
+    */
+    
+    $(document).ready(function() {
+        $('.modal').modal({
+            ready: function(modal, trigger) {
+                M.updateTextFields();
+            },
+            complete: function() {
+                refresh();
+            }
+        });
+         $(".button-collapse").sideNav();
     });
     
     
