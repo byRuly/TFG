@@ -1,0 +1,33 @@
+<header>
+    <!--<h3 style="text-align:center">Tenis</h3>-->
+    <!--<img class="center-align" src="/resources/bannerbasket.jpg" style="align:center">-->
+    <div align="center"><img class="responsive-img" src="/resources/banner.png" alt="banner" align="center"></div>
+</header>
+<main>
+    <div ng-controller="PlayersCtrl">
+        <div class="container" align="center">
+            <img class="responsive-img" id=player1 src="/resources/pics/default.png" alt="Imagen Jugador 1" width=250 height=250 hspace="60" style="border: 1px solid #ddd; border-radius: 4px; padding: 5px;"/>
+            <img class="responsive-img" src="/resources/vs.jpg" alt="versus" width=150 height=150/>
+            <img class="responsive-img" id=player2 src="/resources/pics/default.png" alt="Imagen Jugador 2" width=250 height=250 hspace="60" style="border: 1px solid #ddd; border-radius: 4px; padding: 5px;"/>
+        </div>
+        <div class="container" align="center">
+            <div style="width:250px; display:inline-block; padding: 5px; margin-right:275px">
+                <input list="options1" name="newPlayer1" ng-model="newPlayer1.name" ng-change="updatePicture(newPlayer1.name,1)">
+                <datalist id="options1">
+                    <option ng-repeat="dataUnit in data" value={{dataUnit.name}}>{{dataUnit.name}}</option>
+                </datalist>
+            </div>
+            <div style="width:250px; display:inline-block; padding: 5px;">
+                <input list="options2" name="newPlayer2" ng-model="newPlayer2.name" ng-change="updatePicture(newPlayer2.name,2)">
+                <datalist id="options2">
+                    <option ng-repeat="dataUnit in data" value={{dataUnit.name}}>{{dataUnit.name}}</option>
+                </datalist>
+            </div>
+        </div>
+        <div>&nbsp;</div>
+        <div class="container" align="center">
+            <button class="btn-floating btn-large waves-effect waves-light green darken-1 modal-trigger" ng-click="validatePlayers(newPlayer1.name,newPlayer2.name)"><i class="material-icons">play_circle_outline</i></button>
+        </div>
+    </div>
+
+</main>

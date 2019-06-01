@@ -6,38 +6,16 @@
 var aux;
 
 angular.module("TrabajoFinGrado").
-    controller("TennisCtrl", ["$scope", "$http", function($scope, $http) {
+    controller("TennisCtrl", ["$scope", "$http", "$rootScope", function($scope, $http, $rootScope) {
         console.log("Controller initialized");
 
 
     $scope.data = {};
 
-
-    /*
-    var refresh = $scope.refresh = function() {
-
-        $http
-            .get("../api/v1/tennis")
-            .then(function(response) {
-                console.log("Data received:" + JSON.stringify(response.data, null, 2));
-                $scope.data = response.data;
-                aux =1;
-            }, function(response) {
-                switch (response.status) {
-                    case 404:
-                        $scope.data = {};
-                        M.toast({html: '<i class="material-icons">error_outline</i> No hay variables definidas'},4000);
-                        break;
-                    default:
-                        M.toast({html: '<i class="material-icons">error_outline</i> Error obteniendo variables'},4000);
-                        break;
-                }
-                aux=0;
-            });
-    };*/
     
     var refresh = $scope.refresh = function(){
         
+         console.log($rootScope.player1.name);
         $http
             .get("../api/v1/tennis?include=1")
             .then(function(response) {

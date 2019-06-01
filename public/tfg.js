@@ -14,13 +14,9 @@ angular.module("TrabajoFinGrado", ["ngRoute"]).config(function($routeProvider) {
             templateUrl: "/tennis/tennis.html",
             controller: "TennisCtrl"
         })
-        .when("/soccer", {
-            templateUrl: "/soccer/soccer.html",
-            controller: "SoccerCtrl"
-        })
-        .when("/basketball", {
-            templateUrl: "/basketball/basketball.html",
-            controller: "BasketballCtrl"
+        .when("/players", {
+            templateUrl: "/players/players.html",
+            controller: "PlayersCtrl"
         });
     console.log("App initialized and configured");
 });
