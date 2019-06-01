@@ -5,6 +5,7 @@ var helmet = require("helmet");
 var bodyParser = require("body-parser");
 
 var tennisAPI = require("./api/v1/tennis.js");
+var playersAPI = require("./api/v1/players.js");
 
 var app = express();
 var port = (process.env.PORT || 10000);
@@ -15,6 +16,7 @@ var MongoClient = require("mongodb").MongoClient;
 var mdbURL = "mongodb://raul:raul1234@ds223605.mlab.com:23605/tfg1";
 
 var dbTennis;
+var dbPlayers;
 
 app.use(bodyParser.json());
 app.use(helmet());
@@ -29,8 +31,10 @@ MongoClient.connect(mdbURL,{useNewUrlParser:true}, function(err,mlabs){
     
     var database = mlabs.db("tfg1");
     dbTennis = database.collection("tennis");
+    dbPlayers = database.collection("players")
     
     tennisAPI.register(app, dbTennis, BASE_API_PATH);
+    playersAPI.register(app, dbPlayers, BASE_API_PATH);
 
     app.listen(port, () => {
        console.log("Server running in port: " + port);

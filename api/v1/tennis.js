@@ -214,7 +214,7 @@ app.get(BASE_API_PATH + "/tennis/:variable", function (request, response) {
                 
                 } else if (tennisvariables.length > 0) { 
                     var tennis = tennisvariables; //we expect only one result
-                    console.log("INFO: Sending earlyleaver: " + JSON.stringify(tennis, 2, null));
+                    console.log("INFO: Sending variable: " + JSON.stringify(tennis, 2, null));
                     response.send(tennis);
                 
                 } else {
