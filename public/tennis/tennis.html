@@ -5,6 +5,26 @@
 </header>
 <main>
     <div ng-controller="TennisCtrl">
+        
+        
+        <div class="container" align="center">
+            
+            <div style="display:inline-block; font-size:xx-large;" ng-repeat="dataUnit in player1">
+                {{dataUnit.name}}
+                <img class="responsive-img" src="/resources/flags/{{dataUnit.nationality}}.png" alt="Bandera Jugador 1" hspace=10 />
+            </div>
+            
+            <img class="responsive-img" src="/resources/vs.jpg" alt="versus" width=20 height=20 hspace=50 />
+            
+            <div style="display:inline-block; font-size:xx-large;" ng-repeat="dataUnit in player2">
+                {{dataUnit.name}}
+                <img class="responsive-img" src="/resources/flags/{{dataUnit.nationality}}.png" alt="Bandera Jugador 2" hspace=10 />
+            </div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        
+        
         <div class="container">
             <table class="highlight"><!--class="striped highlight"-->
                 <thead>
@@ -28,21 +48,9 @@
                         </td>
                     </tr>
                     
-                    <!--OldADD
-                    <tr>
-                        <td><input class="form-control" ng-model="newData.variable" style="text-align:center"/></td>
-                        <td><input class="form-control" ng-model="newData.weight" style="text-align:center"/></td>
-                        <td><input class="form-control" ng-model="newData.recommendedweight" style="text-align:center"/></td>
-                        <td style="text-align:center"><button class="btn waves-effect waves-light blue darken-3" ng-click="addData()"><i class="material-icons">add</i></button></td>
-                    </tr>
-                    -->
                     <tr class="grey lighten-2">
                         <td>
-                            <!--
-                            <select>
-                                <option ng-repeat="dataUnit in data" value={{dataUnit.variable}}>{{dataUnit.variable}}</option>
-                            </select>
-                            -->
+                            
                             <input list="options" name="newVariable" ng-model="newData.variable" ng-change="updateNewRecWeight(newData.variable)">
                             <datalist id="options">
                                 <option ng-repeat="dataUnit in allData" value={{dataUnit.variable}}>{{dataUnit.variable}}</option>
@@ -55,14 +63,6 @@
                         </td>
                         <td style="text-align:center"><button class="btn waves-effect waves-light blue darken-3" ng-click="editDataAdd(newData)"><i class="material-icons">add</i></button></td>
                     </tr>
-                    <!--
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    -->
                 </tbody>
             </table>
                 

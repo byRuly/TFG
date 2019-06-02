@@ -5,7 +5,7 @@
 var aux;
 
 angular.module("TrabajoFinGrado").
-    controller("TennisCtrl", ["$scope", "$rootScope", "$http", function($scope, $rootScope, $http) {
+    controller("TennisCtrl", ["$scope", "$http", "$routeParams", function($scope, $http, $routeParams) {
         console.log("Controller initialized");
 
 
@@ -42,8 +42,6 @@ angular.module("TrabajoFinGrado").
             .then(function(response) {
                 console.log("Data received:" + JSON.stringify(response.data, null, 2));
                 $scope.allData = response.data;
-                //aux =1;
-                //TODO probar que ocurre si consideras solo las que tienen include=0 en esta funcion
                 
             }, function(response) {
                 switch (response.status) {
@@ -55,7 +53,45 @@ angular.module("TrabajoFinGrado").
                         //M.toast({html: '<i class="material-icons">error_outline</i> Error obteniendo variables'},4000);
                         break;
                 }
-                //aux=0;
+            });
+            
+            refresh3();
+    };
+    
+    var refresh3 = $scope.refresh3 = function(){
+        
+        $http
+            .get("../api/v1/players/" + $routeParams.name1)
+            .then(function(response){
+                console.log("Data received:" + JSON.stringify(response.data, null, 2));
+                $scope.player1 = response.data;
+            }, function(response){
+                switch (response.status) {
+                    case 404:
+                        $scope.player1 = {};
+                        M.toast({html: '<i class="material-icons">error_outline</i> No se han encontrado datos para el jugador 1'},4000);
+                        break;
+                    default:
+                        //M.toast({html: '<i class="material-icons">error_outline</i> Error obteniendo variables'},4000);
+                        break;
+                }
+            });
+            
+        $http
+            .get("../api/v1/players/" + $routeParams.name2)
+            .then(function(response){
+                console.log("Data received:" + JSON.stringify(response.data, null, 2));
+                $scope.player2 = response.data;
+            }, function(response){
+                switch (response.status) {
+                    case 404:
+                        $scope.player2 = {};
+                        M.toast({html: '<i class="material-icons">error_outline</i> No se han encontrado datos para el jugador 2'},4000);
+                        break;
+                    default:
+                        //M.toast({html: '<i class="material-icons">error_outline</i> Error obteniendo variables'},4000);
+                        break;
+                }
             });
     };
     
