@@ -3,7 +3,7 @@
 /*global $*/
 
 angular.module("TrabajoFinGrado").
-    controller("PlayersCtrl", ["$scope", "$http", "$location", "$rootScope", function($scope, $http, $location, $rootScope) {
+    controller("PlayersCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
         console.log("Controller initialized");
 
 
@@ -29,13 +29,6 @@ angular.module("TrabajoFinGrado").
             });
     };
     
-
-    //c07666bd5b
-    $scope.editDataModal = function(data) {
-        data["oldVariable"] = data.variable;
-        $scope.editDataUnit = data;
-        $('#editModal2').modal('open');
-    };
     
     $scope.updatePicture = function(name,number){
         
@@ -59,11 +52,12 @@ angular.module("TrabajoFinGrado").
             M.toast({html: '<i class="material-icons">error_outline</i> Debes definir ambos jugadores para continuar'},4000);
         } else {
             
+            /*
             $http
             .get("../api/v1/players/" + name1)
             .then(function(response) {
                 console.log("Data received:" + JSON.stringify(response.data, null, 2));
-                $scope.player1 = response.data;
+                $rootScope.player1 = response.data;
             }, function(response) {
                 switch (response.status) {
                     case 404:
@@ -79,7 +73,7 @@ angular.module("TrabajoFinGrado").
             .get("../api/v1/players/" + name2)
             .then(function(response) {
                 console.log("Data received:" + JSON.stringify(response.data, null, 2));
-                $scope.player2 = response.data;
+                $rootScope.player2 = response.data;
             }, function(response) {
                 switch (response.status) {
                     case 404:
@@ -89,9 +83,9 @@ angular.module("TrabajoFinGrado").
                         M.toast({html: '<i class="material-icons">error_outline</i> Error obteniendo jugadores'},4000);
                         break;
                 }
-            });
+            });*/
             
-            //$location.path("/tennis");
+            $location.path("/tennis/" + name1 + "/" + name2);
         }
     };
     

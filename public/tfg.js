@@ -10,13 +10,13 @@ angular.module("TrabajoFinGrado", ["ngRoute"]).config(function($routeProvider) {
         .when("/about", {
             templateUrl: "about.html"
         })
-        .when("/tennis", {
-            templateUrl: "/tennis/tennis.html",
-            controller: "TennisCtrl"
-        })
         .when("/players", {
             templateUrl: "/players/players.html",
             controller: "PlayersCtrl"
+        })
+        .when("/tennis/:name1/:name2", {
+            templateUrl: "/tennis/tennis.html",
+            controller: "TennisCtrl"
         });
     console.log("App initialized and configured");
 });

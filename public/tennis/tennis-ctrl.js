@@ -1,21 +1,18 @@
 /*global angular*/
 /*global M*/
 /*global $*/
-/*global $modal*/
 
 var aux;
 
 angular.module("TrabajoFinGrado").
-    controller("TennisCtrl", ["$scope", "$http", "$rootScope", function($scope, $http, $rootScope) {
+    controller("TennisCtrl", ["$scope", "$rootScope", "$http", function($scope, $rootScope, $http) {
         console.log("Controller initialized");
 
 
     $scope.data = {};
-
     
     var refresh = $scope.refresh = function(){
         
-         console.log($rootScope.player1.name);
         $http
             .get("../api/v1/tennis?include=1")
             .then(function(response) {
@@ -293,15 +290,7 @@ angular.module("TrabajoFinGrado").
         $('#editModal2').modal('open');
     };
     
-    
     refresh();
-
-
-    /*
-    $(document).ready(function(){
-        $('.modal').modal();
-    });
-    */
     
     $(document).ready(function() {
         $('.modal').modal({
@@ -312,22 +301,6 @@ angular.module("TrabajoFinGrado").
                 refresh();
             }
         });
-         $(".button-collapse").sideNav();
+        //$(".button-collapse").sideNav();
     });
-    
-    
-    
-    
-/*
-    $(document).ready(function() {
-        $('.modal').modal({
-            ready: function(modal, trigger) {
-                Materialize.updateTextFields();
-            },
-            complete: function() {
-                refresh();
-            }
-        });
-        $(".button-collapse").sideNav();
-    });*/
 }]);
