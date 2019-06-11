@@ -4,6 +4,7 @@
     <div align="center"><img class="responsive-img" src="/resources/banner.png" alt="banner" align="center"></div>
 </header>
 <main>
+    </br></br></br>
     <div ng-controller="PlayersCtrl">
         <div class="container" align="center">
             <img class="responsive-img" id=player1 src="/resources/pics/default.png" alt="Imagen Jugador 1" width=250 height=250 hspace="60" style="border: 1px solid #ddd; border-radius: 4px; padding: 5px;"/>
@@ -24,9 +25,25 @@
                 </datalist>
             </div>
         </div>
-        <div>&nbsp;</div>
+        
+        </br>
+        
         <div class="container" align="center">
-            <button class="btn-floating btn-large waves-effect waves-light green darken-1 modal-trigger" ng-click="validatePlayers(newPlayer1.name,newPlayer2.name)"><i class="material-icons">play_circle_outline</i></button>
+            <div style="width:250px;">
+                <h5>Superficie</h5>
+                <input list="surface" name="surface" ng-model="surface.name">
+                <datalist id="surface">
+                    <option value="Rapida"></option>
+                    <option value="Tierra Batida"></option>
+                    <option value="Hierba"></option>
+                </datalist>
+            </div>
+        </div>
+        
+        </br>
+        
+        <div class="container" align="center">
+            <button class="btn-large waves-effect waves-light green darken-1 modal-trigger" ng-click="validatePlayers(newPlayer1.name,newPlayer2.name,surface.name)">Comenzar<i class="material-icons">play_circle_outline</i></button>
         </div>
     </div>
 

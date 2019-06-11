@@ -45,47 +45,23 @@ angular.module("TrabajoFinGrado").
         }
     };
     
-    $scope.validatePlayers = function(name1,name2){
+    $scope.validatePlayers = function(name1,name2,surface){
         
         if (name1==null || name2==null){
             
             M.toast({html: '<i class="material-icons">error_outline</i> Debes definir ambos jugadores para continuar'},4000);
+        
+        } else if(name1==name2) {
+            
+            M.toast({html: '<i class="material-icons">error_outline</i> Ambos jugadores deben ser diferentes'},4000);
+            
         } else {
             
-            /*
-            $http
-            .get("../api/v1/players/" + name1)
-            .then(function(response) {
-                console.log("Data received:" + JSON.stringify(response.data, null, 2));
-                $rootScope.player1 = response.data;
-            }, function(response) {
-                switch (response.status) {
-                    case 404:
-                        M.toast({html: '<i class="material-icons">error_outline</i> No se han encontrado los datos del jugador 1'},4000);
-                        break;
-                    default:
-                        M.toast({html: '<i class="material-icons">error_outline</i> Error obteniendo jugadores'},4000);
-                        break;
-                }
-            });
-            
-            $http
-            .get("../api/v1/players/" + name2)
-            .then(function(response) {
-                console.log("Data received:" + JSON.stringify(response.data, null, 2));
-                $rootScope.player2 = response.data;
-            }, function(response) {
-                switch (response.status) {
-                    case 404:
-                        M.toast({html: '<i class="material-icons">error_outline</i> No se han encontrado los datos del jugador 2'},4000);
-                        break;
-                    default:
-                        M.toast({html: '<i class="material-icons">error_outline</i> Error obteniendo jugadores'},4000);
-                        break;
-                }
-            });*/
-            
-            $location.path("/tennis/" + name1 + "/" + name2);
+            if(surface==undefined){
+                $location.path("/tennis/" + name1 + "/" + name2 + "/none");
+            } else {
+                 $location.path("/tennis/" + name1 + "/" + name2 + "/" + surface);
+            }
         }
     };
     

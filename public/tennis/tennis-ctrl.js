@@ -5,7 +5,7 @@
 var aux;
 
 angular.module("TrabajoFinGrado").
-    controller("TennisCtrl", ["$scope", "$http", "$routeParams", function($scope, $http, $routeParams) {
+    controller("TennisCtrl", ["$scope", "$http", "$routeParams", "$location",function($scope, $http, $routeParams, $location) {
         console.log("Controller initialized");
 
 
@@ -316,6 +316,11 @@ angular.module("TrabajoFinGrado").
                 //Materialize.toast('<i class="material-icons">error_outline</i> Error editing data!', 4000);
                 refresh();
             });
+    };
+    
+    $scope.return = function(){
+        
+        $location.path("/");
     };
     
     

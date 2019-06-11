@@ -31,7 +31,7 @@ MongoClient.connect(mdbURL,{useNewUrlParser:true}, function(err,mlabs){
     
     var database = mlabs.db("tfg1");
     dbTennis = database.collection("tennis");
-    dbPlayers = database.collection("players")
+    dbPlayers = database.collection("players");
     
     tennisAPI.register(app, dbTennis, BASE_API_PATH);
     playersAPI.register(app, dbPlayers, BASE_API_PATH);

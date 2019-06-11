@@ -4,17 +4,17 @@ angular.module("TrabajoFinGrado", ["ngRoute"]).config(function($routeProvider) {
     
     $routeProvider
     
-        .when("/", {
+        /*.when("/", {
             templateUrl: "main.html"
-        })
+        })*/
         .when("/about", {
             templateUrl: "about.html"
         })
-        .when("/players", {
+        .when("/", {
             templateUrl: "/players/players.html",
             controller: "PlayersCtrl"
         })
-        .when("/tennis/:name1/:name2", {
+        .when("/tennis/:name1/:name2/:surface", {
             templateUrl: "/tennis/tennis.html",
             controller: "TennisCtrl"
         });
