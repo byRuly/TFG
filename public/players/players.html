@@ -13,13 +13,13 @@
         </div>
         <div class="container" align="center">
             <div style="width:250px; display:inline-block; padding: 5px; margin-right:275px">
-                <input list="options1" name="newPlayer1" ng-model="newPlayer1.name" ng-change="updatePicture(newPlayer1.name,1)">
+                <input list="options1" name="newPlayer1" ng-model="newPlayer1.name" ng-change="updatePicture(newPlayer1.name,1)" style="text-align:center;">
                 <datalist id="options1">
                     <option ng-repeat="dataUnit in data" value={{dataUnit.name}}>{{dataUnit.name}}</option>
                 </datalist>
             </div>
             <div style="width:250px; display:inline-block; padding: 5px;">
-                <input list="options2" name="newPlayer2" ng-model="newPlayer2.name" ng-change="updatePicture(newPlayer2.name,2)">
+                <input list="options2" name="newPlayer2" ng-model="newPlayer2.name" ng-change="updatePicture(newPlayer2.name,2)" style="text-align:center;">
                 <datalist id="options2">
                     <option ng-repeat="dataUnit in data" value={{dataUnit.name}}>{{dataUnit.name}}</option>
                 </datalist>
@@ -31,7 +31,7 @@
         <div class="container" align="center">
             <div style="width:250px;">
                 <h5>Superficie</h5>
-                <input list="surface" name="surface" ng-model="surface.name">
+                <input list="surface" name="surface" ng-model="surface.name" style="text-align:center; padding-left:2px;">
                 <datalist id="surface">
                     <option value="Rapida"></option>
                     <option value="Tierra Batida"></option>
@@ -43,7 +43,11 @@
         </br>
         
         <div class="container" align="center">
-            <button class="btn-large waves-effect waves-light green darken-1 modal-trigger" ng-click="validatePlayers(newPlayer1.name,newPlayer2.name,surface.name)">Comenzar<i class="material-icons">play_circle_outline</i></button>
+            <!--<button class="btn-large waves-effect waves-light green darken-1 modal-trigger" ng-click="validatePlayers(newPlayer1.name,newPlayer2.name,surface.name)">Comenzar<i class="material-icons">play_circle_outline</i></button>-->
+            <button style="height: 48px;	width: 187px;	border-radius: 24px;	background: linear-gradient(90deg, #BAC621 0.05%, #007935 100%); text-align: center; color: white; font-size: 1.30rem;" ng-click="validatePlayers(newPlayer1.name,newPlayer2.name,surface.name)">
+                Comenzar
+            </button>
+            <button ng-click="deletePlayers()" style="display:none;"></button>
         </div>
     </div>
 

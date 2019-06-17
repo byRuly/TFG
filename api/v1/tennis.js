@@ -19,39 +19,95 @@ app.get(BASE_API_PATH + "/tennis/loadDefault",function(request, response) {
             console.log('INFO: Empty DB, loading default values');
 
             var tennisvariables = [{
-                "variable": "first serve percentage",
+                "variable": "aces",
                 "weight": "25",
-                "recommendedweight": "60",
-                "include":"1",
-                "positive":"1"
-            },
-            {
-                "variable": "second serve percentage",
-                "weight": "25",
-                "recommendedweight": "80",
-                "include":"1",
-                "positive":"1"
-            },
-            {
-                "variable": "average serve speed",
-                "weight": "25",
-                "recommendedweight": "35",
-                "include":"1",
-                "positive":"1"
-            },
-            {
-                "variable": "unforced errors per game",
-                "weight": "25",
-                "recommendedweight": "90",
+                "recommendedweight": "Bajo",
                 "include":"0",
+                "positive":"1"
+            },
+            {
+                "variable": "dobles faltas",
+                "weight": "25",
+                "recommendedweight": "Medio",
+                "include":"1",
                 "positive":"-1"
             },
             {
-                "variable": "earnings",
+                "variable": "primer servicio",
                 "weight": "25",
-                "recommendedweight": "10",
+                "recommendedweight": "Alto",
                 "include":"0",
                 "positive":"1"
+            },
+            {
+                "variable": "puntos ganados primer servicio",
+                "weight": "25",
+                "recommendedweight": "Medio",
+                "include":"1",
+                "positive":"1"
+            },
+            {
+                "variable": "puntos ganados al segundo servicio",
+                "weight": "25",
+                "recommendedweight": "Alto",
+                "include":"0",
+                "positive":"1"
+            },
+            {
+                "variable": "puntos de break salvados",
+                "weight": "40",
+                "recommendedweight": "Alto",
+                "include":"1",
+                "positive":"1"
+            },
+            {
+                "variable": "puntos ganados al servicio",
+                "weight": "25",
+                "recommendedweight": "Bajo",
+                "include":"0",
+                "positive":"1"
+            },
+            {
+                "variable": "juegos ganados al servicio",
+                "weight": "25",
+                "recommendedweight": "Bajo",
+                "include":"0",
+                "positive":"1"
+            },
+            {
+                "variable": "tie-breaks ganados",
+                "weight": "25",
+                "recommendedweight": "Alto",
+                "include":"0",
+                "positive":"1"
+            },
+            {
+                "variable": "sets ganados",
+                "weight": "10",
+                "recommendedweight": "Bajo",
+                "include":"1",
+                "positive":"1"
+            },
+            {
+                "variable": "partidos ganados",
+                "weight": "25",
+                "recommendedweight": "Medio",
+                "include":"0",
+                "positive":"1"
+            },
+            {
+                "variable": "victorias rival superior",
+                "weight": "25",
+                "recommendedweight": "Alto",
+                "include":"0",
+                "positive":"1"
+            },
+            {
+                "variable": "derrotas rival inferior",
+                "weight": "25",
+                "recommendedweight": "Alto",
+                "include":"0",
+                "positive":"-1"
             }
             ];
         
@@ -80,39 +136,95 @@ app.get(BASE_API_PATH + "/tennis/loadEmpty",function(request, response) {
             console.log('INFO: Empty DB, loading default values (empty)');
 
             var tennisvariables = [{
-                "variable": "first serve percentage",
+                "variable": "aces",
                 "weight": "25",
-                "recommendedweight": "60",
+                "recommendedweight": "Bajo",
                 "include":"0",
                 "positive":"1"
             },
             {
-                "variable": "second serve percentage",
+                "variable": "dobles faltas",
                 "weight": "25",
-                "recommendedweight": "80",
-                "include":"0",
-                "positive":"1"
-            },
-            {
-                "variable": "average serve speed",
-                "weight": "25",
-                "recommendedweight": "35",
-                "include":"0",
-                "positive":"1"
-            },
-            {
-                "variable": "unforced errors per game",
-                "weight": "25",
-                "recommendedweight": "90",
+                "recommendedweight": "Medio",
                 "include":"0",
                 "positive":"-1"
             },
             {
-                "variable": "earnings",
+                "variable": "primer servicio",
                 "weight": "25",
-                "recommendedweight": "10",
+                "recommendedweight": "Alto",
                 "include":"0",
                 "positive":"1"
+            },
+            {
+                "variable": "puntos ganados primer servicio",
+                "weight": "25",
+                "recommendedweight": "Medio",
+                "include":"0",
+                "positive":"1"
+            },
+            {
+                "variable": "puntos ganados al segundo servicio",
+                "weight": "25",
+                "recommendedweight": "Alto",
+                "include":"0",
+                "positive":"1"
+            },
+            {
+                "variable": "puntos de break salvados",
+                "weight": "40",
+                "recommendedweight": "Alto",
+                "include":"0",
+                "positive":"1"
+            },
+            {
+                "variable": "puntos ganados al servicio",
+                "weight": "25",
+                "recommendedweight": "Bajo",
+                "include":"0",
+                "positive":"1"
+            },
+            {
+                "variable": "juegos ganados al servicio",
+                "weight": "25",
+                "recommendedweight": "Bajo",
+                "include":"0",
+                "positive":"1"
+            },
+            {
+                "variable": "tie-breaks ganados",
+                "weight": "25",
+                "recommendedweight": "Alto",
+                "include":"0",
+                "positive":"1"
+            },
+            {
+                "variable": "sets ganados",
+                "weight": "10",
+                "recommendedweight": "Bajo",
+                "include":"0",
+                "positive":"1"
+            },
+            {
+                "variable": "partidos ganados",
+                "weight": "25",
+                "recommendedweight": "Medio",
+                "include":"0",
+                "positive":"1"
+            },
+            {
+                "variable": "victorias rival superior",
+                "weight": "25",
+                "recommendedweight": "Alto",
+                "include":"0",
+                "positive":"1"
+            },
+            {
+                "variable": "derrotas rival inferior",
+                "weight": "25",
+                "recommendedweight": "Alto",
+                "include":"0",
+                "positive":"-1"
             }
             ];
         

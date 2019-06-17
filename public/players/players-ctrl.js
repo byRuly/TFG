@@ -60,9 +60,20 @@ angular.module("TrabajoFinGrado").
             if(surface==undefined){
                 $location.path("/tennis/" + name1 + "/" + name2 + "/none");
             } else {
-                 $location.path("/tennis/" + name1 + "/" + name2 + "/" + surface);
+                $location.path("/tennis/" + name1 + "/" + name2 + "/" + surface);
             }
         }
+    };
+    
+    $scope.deletePlayers = function(){
+        $http
+            .delete("../api/v1/players")
+            .then(function(response) {
+                console.log("All data deleted!");
+                M.toast({html: '<i class="material-icons">done</i> Todos los jugadores se han borrado con éxito'},4000);
+            }, function(response) {
+                M.toast({html: '<i class="material-icons">error_outline</i> Error borrando los jugadores'},4000);
+            });
     };
     
     refresh();
