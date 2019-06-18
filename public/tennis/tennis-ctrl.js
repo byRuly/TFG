@@ -301,6 +301,15 @@ angular.module("TrabajoFinGrado").
     $scope.predict = function(){
         
         var pesos = 0;
+        var jugador1 = $scope.player1[0];
+        var jugador2 = $scope.player2[0];
+        var superficie = $routeParams.surface;
+        var bonosuperficie = 0.08;
+        var bonorival = 0.11;
+        
+        console.log("Jugador1: " + jugador1.name);
+        console.log("Jugador2: " + jugador2.name);
+        
         angular.forEach($scope.data, function (value, key) {
             
             pesos += parseInt(value.weight, 10);
@@ -336,76 +345,103 @@ angular.module("TrabajoFinGrado").
             var upsetswon2;
             var upsetsagainst2;
             
-            angular.forEach($scope.data, function (value, key) {
+            angular.forEach($scope.allData, function (value, key) {
             
                 switch(value.variable){
                     case "aces":
-                        ace = parseInt(value.weight, 10) * parseInt($scope.player1.ace, 10) * parseInt(value.include, 10);
-                        ace2 = parseInt(value.weight, 10) * parseInt($scope.player2.ace, 10) * parseInt(value.include, 10);
+                        ace = parseInt(value.weight, 10) * parseInt(jugador1.ace, 10) * parseInt(value.include, 10) / 100;
+                        ace2 = parseInt(value.weight, 10) * parseInt(jugador2.ace, 10) * parseInt(value.include, 10) / 100;
                         break;
                     case "dobles faltas":
-                        doublefault = parseInt(value.weight, 10) * parseInt($scope.player1.doublefault, 10) * parseInt(value.include, 10);
-                        doublefault2 = parseInt(value.weight, 10) * parseInt($scope.player2.doublefault, 10) * parseInt(value.include, 10);
-                        console.log("Player1" + $scope.player1.doublefault);
-                        console.log(doublefault);
-                        console.log(doublefault2);
+                        doublefault = parseInt(value.weight, 10) * parseInt(jugador1.doublefault, 10) * parseInt(value.include, 10) / 100;
+                        doublefault2 = parseInt(value.weight, 10) * parseInt(jugador2.doublefault, 10) * parseInt(value.include, 10) / 100;
                         break;
                     case "primer servicio":
-                        firstserve = parseInt(value.weight, 10) * parseInt($scope.player1.firstserve, 10) * parseInt(value.include, 10);
-                        firstserve2 = parseInt(value.weight, 10) * parseInt($scope.player2.firstserve, 10) * parseInt(value.include, 10);
+                        firstserve = parseInt(value.weight, 10) * parseInt(jugador1.firstserve, 10) * parseInt(value.include, 10) / 100;
+                        firstserve2 = parseInt(value.weight, 10) * parseInt(jugador2.firstserve, 10) * parseInt(value.include, 10) / 100;
                         break;
                     case "puntos ganados primer servicio":
-                        firstservewon = parseInt(value.weight, 10) * parseInt($scope.player1.firstservewon, 10) * parseInt(value.include, 10);
-                        firstservewon2 = parseInt(value.weight, 10) * parseInt($scope.player2.firstservewon, 10) * parseInt(value.include, 10);
+                        firstservewon = parseInt(value.weight, 10) * parseInt(jugador1.firstservewon, 10) * parseInt(value.include, 10) / 100;
+                        firstservewon2 = parseInt(value.weight, 10) * parseInt(jugador2.firstservewon, 10) * parseInt(value.include, 10) / 100;
                         break;
                     case "puntos ganados al segundo servicio":
-                        secondservewon = parseInt(value.weight, 10) * parseInt($scope.player1.secondservewon, 10) * parseInt(value.include, 10);
-                        secondservewon2 = parseInt(value.weight, 10) * parseInt($scope.player2.secondservewon, 10) * parseInt(value.include, 10);
+                        secondservewon = parseInt(value.weight, 10) * parseInt(jugador1.secondservewon, 10) * parseInt(value.include, 10) / 100;
+                        secondservewon2 = parseInt(value.weight, 10) * parseInt(jugador2.secondservewon, 10) * parseInt(value.include, 10) / 100;
                         break;
                     case "puntos de break salvados":
-                        breaksaved = parseInt(value.weight, 10) * parseInt($scope.player1.breaksaved, 10) * parseInt(value.include, 10);
-                        breaksaved2 = parseInt(value.weight, 10) * parseInt($scope.player2.breaksaved, 10) * parseInt(value.include, 10);
+                        breaksaved = parseInt(value.weight, 10) * parseInt(jugador1.breaksaved, 10) * parseInt(value.include, 10) / 100;
+                        breaksaved2 = parseInt(value.weight, 10) * parseInt(jugador2.breaksaved, 10) * parseInt(value.include, 10) / 100;
                         break;
                     case "puntos ganados al servicio":
-                        serveptswon = parseInt(value.weight, 10) * parseInt($scope.player1.serveptswon, 10) * parseInt(value.include, 10);
-                        serveptswon2 = parseInt(value.weight, 10) * parseInt($scope.player2.serveptswon, 10) * parseInt(value.include, 10);
+                        serveptswon = parseInt(value.weight, 10) * parseInt(jugador1.serveptswon, 10) * parseInt(value.include, 10) / 100;
+                        serveptswon2 = parseInt(value.weight, 10) * parseInt(jugador2.serveptswon, 10) * parseInt(value.include, 10) / 100;
                         break;
                     case "juegos ganados al servicio":
-                        servegameswon = parseInt(value.weight, 10) * parseInt($scope.player1.servegameswon, 10) * parseInt(value.include, 10);
-                        servegameswon2 = parseInt(value.weight, 10) * parseInt($scope.player2.servegameswon, 10) * parseInt(value.include, 10);
+                        servegameswon = parseInt(value.weight, 10) * parseInt(jugador1.servegameswon, 10) * parseInt(value.include, 10) / 100;
+                        servegameswon2 = parseInt(value.weight, 10) * parseInt(jugador2.servegameswon, 10) * parseInt(value.include, 10) / 100;
                         break;
                     case "tie-breaks ganados":
-                        tiebreakswon = parseInt(value.weight, 10) * parseInt($scope.player1.tiebreakswon, 10) * parseInt(value.include, 10);
-                        tiebreakswon2 = parseInt(value.weight, 10) * parseInt($scope.player2.tiebreakswon, 10) * parseInt(value.include, 10);
+                        tiebreakswon = parseInt(value.weight, 10) * parseInt(jugador1.tiebreakswon, 10) * parseInt(value.include, 10) / 100;
+                        tiebreakswon2 = parseInt(value.weight, 10) * parseInt(jugador2.tiebreakswon, 10) * parseInt(value.include, 10) / 100;
                         break;
                     case "sets ganados":
-                        setswon = parseInt(value.weight, 10) * parseInt($scope.player1.setswon, 10) * parseInt(value.include, 10);
-                        setswon2 = parseInt(value.weight, 10) * parseInt($scope.player2.setswon, 10) * parseInt(value.include, 10);
+                        setswon = parseInt(value.weight, 10) * parseInt(jugador1.setswon, 10) * parseInt(value.include, 10) / 100;
+                        setswon2 = parseInt(value.weight, 10) * parseInt(jugador2.setswon, 10) * parseInt(value.include, 10) / 100;
                         break;
                     case "partidos ganados":
-                        gameswon = parseInt(value.weight, 10) * parseInt($scope.player1.gameswon, 10) * parseInt(value.include, 10);
-                        gameswon2 = parseInt(value.weight, 10) * parseInt($scope.player2.gameswon, 10) * parseInt(value.include, 10);
+                        gameswon = parseInt(value.weight, 10) * parseInt(jugador1.gameswon, 10) * parseInt(value.include, 10) / 100;
+                        gameswon2 = parseInt(value.weight, 10) * parseInt(jugador2.gameswon, 10) * parseInt(value.include, 10) / 100;
                         break;
                     case "victorias rival superior":
-                        upsetswon = parseInt(value.weight, 10) * parseInt($scope.player1.upsetswon, 10) * parseInt(value.include, 10);
-                        upsetswon2 = parseInt(value.weight, 10) * parseInt($scope.player2.upsetswon, 10) * parseInt(value.include, 10);
+                        upsetswon = parseInt(value.weight, 10) * parseInt(jugador1.upsetswon, 10) * parseInt(value.include, 10) / 100;
+                        upsetswon2 = parseInt(value.weight, 10) * parseInt(jugador2.upsetswon, 10) * parseInt(value.include, 10) / 100;
                         break;
                     case "derrotas rival inferior":
-                        upsetsagainst = parseInt(value.weight, 10) * parseInt($scope.player1.upsetsagainst, 10) * parseInt(value.include, 10);
-                        upsetsagainst2 = parseInt(value.weight, 10) * parseInt($scope.player2.upsetsagainst, 10) * parseInt(value.include, 10);
+                        upsetsagainst = parseInt(value.weight, 10) * parseInt(jugador1.upsetsagainst, 10) * parseInt(value.include, 10) / 100;
+                        upsetsagainst2 = parseInt(value.weight, 10) * parseInt(jugador2.upsetsagainst, 10) * parseInt(value.include, 10) / 100;
                         break;
                 }
             });
             
-            console.log(ace);
-            
             var puntuacion1 = ace + doublefault + firstserve + firstservewon + secondservewon + breaksaved + serveptswon + servegameswon + tiebreakswon + setswon + gameswon + upsetswon + upsetsagainst;
             var puntuacion2 = ace2 + doublefault2 + firstserve2 + firstservewon2 + secondservewon2 + breaksaved2 + serveptswon2 + servegameswon2 + tiebreakswon2 + setswon2 + gameswon2 + upsetswon2 + upsetsagainst2;
             
+            if (jugador1.surface == superficie.replace(/ /g,'')){
+                console.log("El jugador " + jugador1.name + " recibe bonificación de superficie favorita.");
+                puntuacion1 = puntuacion1 + (puntuacion1 * bonosuperficie);
+                
+            }
+            if (jugador2.surface == superficie.replace(/ /g,'')){
+                console.log("El jugador " + jugador2.name + " recibe bonificación de superficie favorita.");
+                puntuacion2 = puntuacion2 + (puntuacion2 * bonosuperficie); 
+            }
+            
+            if (jugador1.h2h.includes(jugador2.name.replace(/ /g,''))){
+                console.log("El jugador " + jugador1.name + " recibe bonificación de enfrentamiento directo favorable");
+                puntuacion1 = puntuacion1 + (puntuacion1 * bonorival);
+                
+            } else if (jugador2.h2h.includes(jugador1.name.replace(/ /g,''))){
+                console.log("El jugador " + jugador2.name + " recibe bonificación de enfrentamiento directo favorable");
+                puntuacion2 = puntuacion2 + (puntuacion2 * bonorival); 
+            }
+            
+            console.log(puntuacion1);
+            console.log(puntuacion2);
+            
             if (puntuacion1 > puntuacion2){
-                console.log(puntuacion1 + "mayor" + puntuacion2);
+                $scope.ganador = jugador1;
+                $scope.ganadorNS = jugador1.name.replace(/ /g,'');
+                $scope.diferencia = ((puntuacion1 - puntuacion2) * 100 / puntuacion2).toFixed(3);
+                $scope.puntuacionmayor = puntuacion1.toFixed(3);
+                $scope.puntuacionmenor = puntuacion2.toFixed(3);
+                $('#winnerModal').modal('open');
             }else{
-                console.log(puntuacion1 + "menor" + puntuacion2);
+                $scope.ganador = jugador2;
+                $scope.ganadorNS = jugador2.name.replace(/ /g,'');
+                $scope.diferencia = ((puntuacion2 - puntuacion1) * 100 / puntuacion1).toFixed(3);
+                $scope.puntuacionmenor = puntuacion1.toFixed(3);
+                $scope.puntuacionmayor = puntuacion2.toFixed(3);
+                $('#winnerModal').modal('open');
             }
             
         }else{

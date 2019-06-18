@@ -85,79 +85,65 @@
                     </div>
                     <div class="col s3">
                         <!--<button class="btn waves-effect waves-light green darken-1" ng-click="predict()">Predecir<i class="material-icons left">autorenew</i></button>-->
-                        <button style="height: 70px;	width: 170px;   margin-left:80px; border-radius: 24px;	background: linear-gradient(90deg, #BAC621 0.05%, #007935 100%); text-align: center; color: white; font-size: 1.60rem;" ng-click="">Predecir</button>
+                        <button style="height: 70px;	width: 170px;   margin-left:80px; border-radius: 24px;	background: linear-gradient(90deg, #BAC621 0.05%, #007935 100%); text-align: center; color: white; font-size: 1.60rem;" ng-click="predict()">Predecir</button>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <div id="editModal" class="modal">
-            <div class="modal-content">
-                <table class="highlight">
-                    <thead>
-                        <tr>
-                            <th style="text-align:center">Variable</th>
-                            <th style="text-align:center">Peso</th>
-                            <th style="text-align:center">Peso Recomendado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="text-align:center">{{dataUnit.variable}}</td>
-                            <td><input class="form-control" ng-model="updatedVariable.weight" style="text-align:center;"/></td>
-                            <td style="text-align:center">{{dataUnit.recommendedweight}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p>Recuerda que la suma de los pesos debe ser 100</p>
-            </div>
-            <div class="modal-footer">
-                <button class="modal-close waves-effect waves-green btn-flat" ng-click="editData(updatedVariable)">
-                    OK
-                </button>
-                <button class="modal-close waves-effect waves-red btn-flat">
-                    Cancelar
-                </button>
-                <!--<a href="/#!/tennis/" class="modal-close waves-effect waves-green btn-flat">OK</a>-->
             </div>
         </div>
         
         <div id="editModal2" class="modal">
-                <div class="modal-content">
-                    <h5>Editar {{editDataUnit.oldVariable}}</h5>
-                    <div class="row">
-                        <form class="col s12">
-                            <div class="row">
-                                <label class="col s6">Variable</label>
+            <div class="modal-content">
+                <h5>Editar {{editDataUnit.oldVariable}}</h5>
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <label class="col s6">Variable</label>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input class="form-control" type="text" id="variable" ng-model="editDataUnit.variable">
+                                <!--<label for="variable">Variable</label>-->
                             </div>
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <input class="form-control" type="text" id="variable" ng-model="editDataUnit.variable">
-                                    <!--<label for="variable">Variable</label>-->
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s3">
+                                <input class="form-control" type="text" id="weight" ng-model="editDataUnit.weight">
+                                <label for="weight">Peso</label>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s3">
-                                    <input class="form-control" type="text" id="weight" ng-model="editDataUnit.weight">
-                                    <label for="weight">Peso</label>
-                                </div>
-                                <div class="input-field col s3">
-                                    <input class="form-control" type="text" id="recommendedweight" ng-model="editDataUnit.recommendedweight">
-                                    <label for="recommendedweight">Peso Recomendado</label>
-                                </div>
+                            <div class="input-field col s3">
+                                <input class="form-control" type="text" id="recommendedweight" ng-model="editDataUnit.recommendedweight">
+                                <label for="recommendedweight">Peso Recomendado</label>
                             </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="modal-close waves-effect waves-green btn-flat" ng-click="editData(editDataUnit)">
-                        OK
-                    </button>
-                    <button class="modal-close waves-effect waves-red btn-flat">
-                        Cancelar
-                    </button>
-                </div>
+                        </div>
+                    </form>
+                   </div>
             </div>
+            <div class="modal-footer">
+                <button class="modal-close waves-effect waves-green btn-flat" ng-click="editData(editDataUnit)">
+                        OK
+                </button>
+                <button class="modal-close waves-effect waves-red btn-flat">
+                        Cancelar
+                </button>
+            </div>
+        </div>
+        
+        <div id="winnerModal" class="modal">
+            <div class="modal-content" style="text-align:center;">
+                <img class="responsive-img" src="/resources/pics/{{ganadorNS}}.png" alt="Imagen Ganador" width=150 height=150 style="border: 1px solid #ddd; border-radius: 4px; padding: 5px;"/>
+                <h4>Ganador: {{ganador.name}}</h4>
+                <h5>Con una variación porcentual del {{diferencia}}%</h5>
+                <h5>({{puntuacionmayor}} frente a {{puntuacionmenor}})</h5>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-close waves-effect waves-green btn-flat" ng-click="">
+                        Predecir de nuevo
+                </button>
+                <button class="modal-close waves-effect waves-red btn-flat" ng-click="">
+                        Cambiar jugadores
+                </button>
+            </div>
+        </div>
         
         
     </div>
