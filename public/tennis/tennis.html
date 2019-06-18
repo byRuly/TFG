@@ -92,31 +92,24 @@
         </div>
         
         <div id="editModal2" class="modal">
-            <div class="modal-content">
-                <h5>Editar {{editDataUnit.oldVariable}}</h5>
+            <div class="modal-content" style="text-align:center;">
+                <br/>
+                <h4>Editar variable: {{editDataUnit.oldVariable}}</h4>
                 <div class="row">
-                    <form class="col s12">
+                    <br/><br/>
+                    <form class="">
                         <div class="row">
-                            <label class="col s6">Variable</label>
+                            <p  class="col s3">&nbsp;</p>
+                            <h5 class="col s3" style="align:center;">Peso</h5>
+                            <input class="form-control col s3" type="text" id="weight" ng-model="editDataUnit.weight" style="text-align:center;font-size:20px;margin-top:5px;">
                         </div>
                         <div class="row">
-                            <div class="input-field col s6">
-                                <input class="form-control" type="text" id="variable" ng-model="editDataUnit.variable">
-                                <!--<label for="variable">Variable</label>-->
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s3">
-                                <input class="form-control" type="text" id="weight" ng-model="editDataUnit.weight">
-                                <label for="weight">Peso</label>
-                            </div>
-                            <div class="input-field col s3">
-                                <input class="form-control" type="text" id="recommendedweight" ng-model="editDataUnit.recommendedweight">
-                                <label for="recommendedweight">Peso Recomendado</label>
-                            </div>
+                            <p class="col s3">&nbsp;</p>
+                            <h5 class="col s3">Peso Recomendado: </h5>
+                            <p class="col s3" style="font-size:20px; margin-top:30px;">{{editDataUnit.recommendedweight}}</p>
                         </div>
                     </form>
-                   </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button class="modal-close waves-effect waves-green btn-flat" ng-click="editData(editDataUnit)">
@@ -139,7 +132,7 @@
                 <button class="modal-close waves-effect waves-green btn-flat" ng-click="">
                         Predecir de nuevo
                 </button>
-                <button class="modal-close waves-effect waves-red btn-flat" ng-click="">
+                <button class="modal-close waves-effect waves-red btn-flat" ng-click="return()">
                         Cambiar jugadores
                 </button>
             </div>
