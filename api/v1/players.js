@@ -31,11 +31,11 @@ app.get(BASE_API_PATH + "/players/loadDefault",function(request, response) {
                 "servegameswon":"88.9",
                 "tiebreakswon":"77.3",
                 "setswon":"80.1",
-                "gameswon":"60.4",
+                "matcheswon":"87.5",
                 "upsetswon":"10.4",
                 "upsetsagainst":"11.7",
                 "surface":"Rapida",
-                "h2h":"RogerFederer AlexanderZverev KeiNishikori KevinAnderson JuanMartinDelPotro JohnIsner"
+                "h2h":"RogerFederer AlexanderZverev KeiNishikori KevinAnderson JuanMartinDelPotro JohnIsner FabioFognini DaniilMedvedev BornaCoric MarinCilic"
             },
             {
                 "name": "Rafael Nadal",
@@ -50,11 +50,11 @@ app.get(BASE_API_PATH + "/players/loadDefault",function(request, response) {
                 "servegameswon":"87.2",
                 "tiebreakswon":"55.6",
                 "setswon":"81.5",
-                "gameswon":"61.6",
+                "matcheswon":"87.0",
                 "upsetswon":"1.9",
                 "upsetsagainst":"11.1",
                 "surface":"TierraBatida",
-                "h2h":"NovakDjokovic DominicThiem AlexanderZverev StefanosTsitsipas KeiNishikori KevinAnderson JuanMartinDelPotro JohnIsner"
+                "h2h":"NovakDjokovic DominicThiem AlexanderZverev StefanosTsitsipas KeiNishikori KevinAnderson JuanMartinDelPotro JohnIsner KarenKhachanov FabioFognini Marin Cilic"
             },
             {
                 "name": "Roger Federer",
@@ -69,11 +69,11 @@ app.get(BASE_API_PATH + "/players/loadDefault",function(request, response) {
                 "servegameswon":"91.0",
                 "tiebreakswon":"63.3",
                 "setswon":"76.5",
-                "gameswon":"57.4",
+                "matcheswon":"82.0",
                 "upsetswon":"0",
                 "upsetsagainst":"15.2",
                 "surface":"Hierba",
-                "h2h":"RafaelNadal KeiNishikori KevinAnderson JuanMartinDelPotro JohnIsner"
+                "h2h":"RafaelNadal KeiNishikori KevinAnderson JuanMartinDelPotro JohnIsner KarenKhachanov FabioFognini DaniilMedvedev BornaCoric MarinCilic"
             },
             {
                 "name": "Dominic Thiem",
@@ -88,11 +88,11 @@ app.get(BASE_API_PATH + "/players/loadDefault",function(request, response) {
                 "servegameswon":"83.6",
                 "tiebreakswon":"44.0",
                 "setswon":"62.8",
-                "gameswon":"54.3",
+                "matcheswon":"68.3",
                 "upsetswon":"8.1",
                 "upsetsagainst":"24.2",
                 "surface":"TierraBatida",
-                "h2h":"NovakDjokovic RogerFederer AlexanderZverev StefanosTsitsipas JohnIsner"
+                "h2h":"NovakDjokovic RogerFederer AlexanderZverev StefanosTsitsipas JohnIsner FabioFognini DaniilMedvedev BornaCoric MarinCilic"
             },
             {
                 "name": "Alexander Zverev",
@@ -107,11 +107,11 @@ app.get(BASE_API_PATH + "/players/loadDefault",function(request, response) {
                 "servegameswon":"81.8",
                 "tiebreakswon":"54.2",
                 "setswon":"65.1",
-                "gameswon":"54.4",
+                "matcheswon":"69.2",
                 "upsetswon":"3.0",
                 "upsetsagainst":"27.3",
                 "surface":"TierraBatida",
-                "h2h":"RogerFederer KeiNishikori KevinAnderson JohnIsner"
+                "h2h":"RogerFederer KeiNishikori KevinAnderson JohnIsner KarenKhachanov FabioFognini DaniilMedvedev MarinCilic"
             },
             {
                 "name": "Stefanos Tsitsipas",
@@ -126,11 +126,11 @@ app.get(BASE_API_PATH + "/players/loadDefault",function(request, response) {
                 "servegameswon":"85.0",
                 "tiebreakswon":"62.8",
                 "setswon":"63.8",
-                "gameswon":"53.5",
+                "matcheswon":"70.1",
                 "upsetswon":"13.9",
                 "upsetsagainst":"17.7",
                 "surface":"TierraBatida",
-                "h2h":"AlexanderZverev KevinAnderson"
+                "h2h":"AlexanderZverev KevinAnderson KarenKhachanov FabioFognini BornaCoric"
             },
             {
                 "name": "Kei Nishikori",
@@ -145,11 +145,11 @@ app.get(BASE_API_PATH + "/players/loadDefault",function(request, response) {
                 "servegameswon":"82.0",
                 "tiebreakswon":"71.4",
                 "setswon":"63.3",
-                "gameswon":"53.5",
+                "matcheswon":"69.4",
                 "upsetswon":"8.1",
                 "upsetsagainst":"17.6",
                 "surface":"TierraBatida",
-                "h2h":"DominicThiem StefanosTsitsipas JohnIsner"
+                "h2h":"DominicThiem StefanosTsitsipas JohnIsner FabioFognini BornaCoric"
             },
             {
                 "name": "Kevin Anderson",
@@ -164,11 +164,11 @@ app.get(BASE_API_PATH + "/players/loadDefault",function(request, response) {
                 "servegameswon":"90.2",
                 "tiebreakswon":"60.0",
                 "setswon":"62.3",
-                "gameswon":"52.7",
+                "matcheswon":"74.4",
                 "upsetswon":"4.5",
                 "upsetsagainst":"18.2",
                 "surface":"Rapida",
-                "h2h":"DominicThiem KeiNishikori"
+                "h2h":"DominicThiem KeiNishikori KarenKhachanov FabioFognini BornaCoric"
             },
             {
                 "name": "Juan Martin Del Potro",
@@ -183,11 +183,11 @@ app.get(BASE_API_PATH + "/players/loadDefault",function(request, response) {
                 "servegameswon":"88.5",
                 "tiebreakswon":"61.9",
                 "setswon":"71.4",
-                "gameswon":"56.9",
+                "matcheswon":"72.2",
                 "upsetswon":"2.8",
                 "upsetsagainst":"22.2",
                 "surface":"Rapida",
-                "h2h":"DominicThiem AlexanderZverev StefanosTsitsipas KeiNishikori KevinAnderson JohnIsner"
+                "h2h":"DominicThiem AlexanderZverev StefanosTsitsipas KeiNishikori KevinAnderson JohnIsner KarenKhachanov MarinCilic"
             },
             {
                 "name": "John Isner",
@@ -202,11 +202,106 @@ app.get(BASE_API_PATH + "/players/loadDefault",function(request, response) {
                 "servegameswon":"93.8",
                 "tiebreakswon":"56.3",
                 "setswon":"60.6",
-                "gameswon":"52.3",
+                "matcheswon":"64.7",
                 "upsetswon":"0",
                 "upsetsagainst":"23.5",
                 "surface":"Hierba",
-                "h2h":"StefanosTsitsipas KevinAnderson"
+                "h2h":"StefanosTsitsipas KevinAnderson FabioFognini MarinCilic"
+            },
+            {
+                "name": "Karen Khachanov",
+                "nationality": "RU",
+                "ace": "11.3",
+                "doublefault":"3.3",
+                "firstserve":"64.4",
+                "firstservewon":"74.8",
+                "secondservewon":"51.9",
+                "breaksaved":"65.2",
+                "serveptswon":"66.7",
+                "servegameswon":"84.6",
+                "tiebreakswon":"35.5",
+                "setswon":"57.9",
+                "matcheswon":"62.1",
+                "upsetswon":"19.0",
+                "upsetsagainst":"22.4",
+                "surface":"Hierba",
+                "h2h":"JohnIsner"
+            },
+            {
+                "name": "Fabio Fognini",
+                "nationality": "IT",
+                "ace": "4.5",
+                "doublefault":"4.8",
+                "firstserve":"61.3",
+                "firstservewon":"68.7",
+                "secondservewon":"48.4",
+                "breaksaved":"56.2",
+                "serveptswon":"60.8",
+                "servegameswon":"74.4",
+                "tiebreakswon":"62.5",
+                "setswon":"59.9",
+                "matcheswon":"64.9",
+                "upsetswon":"7.0",
+                "upsetsagainst":"28.1",
+                "surface":"TierraBatida",
+                "h2h":"BornaCoric"
+            },
+            {
+                "name": "Daniil Medvedev",
+                "nationality": "RU",
+                "ace": "9.4",
+                "doublefault":"4.7",
+                "firstserve":"56.6",
+                "firstservewon":"74.8",
+                "secondservewon":"52.4",
+                "breaksaved":"60.5",
+                "serveptswon":"65.1",
+                "servegameswon":"82.4",
+                "tiebreakswon":"81.3",
+                "setswon":"66.3",
+                "matcheswon":"69.9",
+                "upsetswon":"20.5",
+                "upsetsagainst":"11.0",
+                "surface":"Rapida",
+                "h2h":"StefanosTsitsipas"
+            },
+            {
+                "name": "Borna Coric",
+                "nationality": "HR",
+                "ace": "8.4",
+                "doublefault":"2.8",
+                "firstserve":"62.8",
+                "firstservewon":"73.7",
+                "secondservewon":"53.5",
+                "breaksaved":"65.1",
+                "serveptswon":"66.2",
+                "servegameswon":"84.0",
+                "tiebreakswon":"38.5",
+                "setswon":"58.5",
+                "matcheswon":"62.3",
+                "upsetswon":"3.8",
+                "upsetsagainst":"22.6",
+                "surface":"TierraBatida",
+                "h2h":"AlexanderZverev KarenKhachanov DaniilMedvedev"
+            },
+            {
+                "name": "Marin Cilic",
+                "nationality": "HR",
+                "ace": "11.3",
+                "doublefault":"4.3",
+                "firstserve":"59.2",
+                "firstservewon":"76.9",
+                "secondservewon":"48.4",
+                "breaksaved":"63.7",
+                "serveptswon":"65.3",
+                "servegameswon":"81.8",
+                "tiebreakswon":"44.4",
+                "setswon":"59.3",
+                "matcheswon":"57.8",
+                "upsetswon":"0",
+                "upsetsagainst":"33.3",
+                "surface":"Hierba",
+                "h2h":"StefanosTsitsipas KeiNishikori KevinAnderson KarenKhachanov FabioFognini BornaCoric"
             }
             ];
         

@@ -328,7 +328,7 @@ angular.module("TrabajoFinGrado").
             var servegameswon;
             var tiebreakswon;
             var setswon;
-            var gameswon;
+            var matcheswon;
             var upsetswon;
             var upsetsagainst;
             var ace2;
@@ -341,7 +341,7 @@ angular.module("TrabajoFinGrado").
             var servegameswon2;
             var tiebreakswon2;
             var setswon2;
-            var gameswon2;
+            var matcheswon2;
             var upsetswon2;
             var upsetsagainst2;
             
@@ -389,8 +389,8 @@ angular.module("TrabajoFinGrado").
                         setswon2 = parseInt(value.weight, 10) * parseInt(jugador2.setswon, 10) * parseInt(value.include, 10) / 100;
                         break;
                     case "partidos ganados":
-                        gameswon = parseInt(value.weight, 10) * parseInt(jugador1.gameswon, 10) * parseInt(value.include, 10) / 100;
-                        gameswon2 = parseInt(value.weight, 10) * parseInt(jugador2.gameswon, 10) * parseInt(value.include, 10) / 100;
+                        matcheswon = parseInt(value.weight, 10) * parseInt(jugador1.matcheswon, 10) * parseInt(value.include, 10) / 100;
+                        matcheswon2 = parseInt(value.weight, 10) * parseInt(jugador2.matcheswon, 10) * parseInt(value.include, 10) / 100;
                         break;
                     case "victorias rival superior":
                         upsetswon = parseInt(value.weight, 10) * parseInt(jugador1.upsetswon, 10) * parseInt(value.include, 10) / 100;
@@ -403,8 +403,8 @@ angular.module("TrabajoFinGrado").
                 }
             });
             
-            var puntuacion1 = ace + doublefault + firstserve + firstservewon + secondservewon + breaksaved + serveptswon + servegameswon + tiebreakswon + setswon + gameswon + upsetswon + upsetsagainst;
-            var puntuacion2 = ace2 + doublefault2 + firstserve2 + firstservewon2 + secondservewon2 + breaksaved2 + serveptswon2 + servegameswon2 + tiebreakswon2 + setswon2 + gameswon2 + upsetswon2 + upsetsagainst2;
+            var puntuacion1 = ace + doublefault + firstserve + firstservewon + secondservewon + breaksaved + serveptswon + servegameswon + tiebreakswon + setswon + matcheswon + upsetswon + upsetsagainst;
+            var puntuacion2 = ace2 + doublefault2 + firstserve2 + firstservewon2 + secondservewon2 + breaksaved2 + serveptswon2 + servegameswon2 + tiebreakswon2 + setswon2 + matcheswon2 + upsetswon2 + upsetsagainst2;
             
             if (jugador1.surface == superficie.replace(/ /g,'')){
                 console.log("El jugador " + jugador1.name + " recibe bonificación de superficie favorita.");

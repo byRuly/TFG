@@ -21,7 +21,7 @@ app.get(BASE_API_PATH + "/tennis/loadDefault",function(request, response) {
             var tennisvariables = [{
                 "variable": "aces",
                 "weight": "25",
-                "recommendedweight": "Bajo",
+                "recommendedweight": "Medio",
                 "include":"0",
                 "positive":"1"
             },
@@ -138,7 +138,7 @@ app.get(BASE_API_PATH + "/tennis/loadEmpty",function(request, response) {
             var tennisvariables = [{
                 "variable": "aces",
                 "weight": "25",
-                "recommendedweight": "Bajo",
+                "recommendedweight": "Medio",
                 "include":"0",
                 "positive":"1"
             },
