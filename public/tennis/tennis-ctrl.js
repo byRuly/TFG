@@ -418,7 +418,11 @@ angular.module("TrabajoFinGrado").
         delete data._id;
         delete data.oldVariable;
         
-        $http
+        if(data.weight.isNaN()){
+            M.toast({html: '<i class="material-icons">error_outline</i> El peso de la variable debe ser un número'},4000);
+            data.weight = $scope.oldWeight;
+        } else {
+            $http
             .put("../api/v1/tennis/" + data.variable, data)
             .then(function(response) {
                 console.log("Data " + data.variable + " edited!");
@@ -428,6 +432,7 @@ angular.module("TrabajoFinGrado").
                 M.toast({html: '<i class="material-icons">error_outline</i> Error editando la variable'},4000);
                 refresh();
             });
+        }
     };
     
     $scope.editData2 = function(data){
