@@ -51,7 +51,7 @@
                                 <option ng-repeat="dataUnit in allData" value={{dataUnit.variable}}>{{dataUnit.variable}}</option>
                             </datalist>
                         </td>
-                        <td><input class="form-control" ng-model="newData.weight" style="text-align:center"/></td>
+                        <td><input type="text" class="form-control" ng-model="newData.weight" style="text-align:center"/></td>
                         <td>
                             <div style="text-align:center" ng-model="newData.recommendedweight">{{dataToAdd[0].recommendedweight}}</div>
                         </td>
@@ -90,7 +90,7 @@
                         <div class="row">
                             <p  class="col s3">&nbsp;</p>
                             <h5 class="col s3" style="align:center;">Peso</h5>
-                            <input class="form-control col s3" type="number" id="weight" ng-model="editDataUnit.weight" style="text-align:center;font-size:20px;margin-top:5px;;margin-left:3px;">
+                            <input class="form-control col s3" type="text" id="weight" ng-model="editDataUnit.weight" style="text-align:center;font-size:20px;margin-top:5px;;margin-left:3px;">
                         </div>
                         <div class="row">
                             <p class="col s3">&nbsp;</p>

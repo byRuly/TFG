@@ -172,8 +172,11 @@ angular.module("TrabajoFinGrado").
         data.include = "1";
         delete data._id;
         delete data.oldVariable;
-
-        $http
+        
+        if(isNaN(data.weight)){
+            M.toast({html: '<i class="material-icons">error_outline</i> El peso debe ser un número'},4000);
+        } else {
+            $http
             .put("../api/v1/tennis/" + data.variable, data)
             .then(function(response) {
                 console.log("Data " + data.variable + " edited!");
@@ -183,6 +186,7 @@ angular.module("TrabajoFinGrado").
                 M.toast({html: '<i class="material-icons">error_outline</i> Error añadiendo la variable'},4000);
                 refresh();
             });
+        }
     };
     
     
@@ -418,21 +422,22 @@ angular.module("TrabajoFinGrado").
         delete data._id;
         delete data.oldVariable;
         
-        if(data.weight.isNaN()){
-            M.toast({html: '<i class="material-icons">error_outline</i> El peso de la variable debe ser un número'},4000);
+        if(isNaN(data.weight)){
+            M.toast({html: '<i class="material-icons">error_outline</i> El peso debe ser un número'},4000);
             data.weight = $scope.oldWeight;
         } else {
             $http
-            .put("../api/v1/tennis/" + data.variable, data)
-            .then(function(response) {
-                console.log("Data " + data.variable + " edited!");
-                M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' ha sido editada correctamente'},4000);
-                refresh();
-            }, function(response) {
-                M.toast({html: '<i class="material-icons">error_outline</i> Error editando la variable'},4000);
-                refresh();
-            });
+                .put("../api/v1/tennis/" + data.variable, data)
+                .then(function(response) {
+                    console.log("Data " + data.variable + " edited!");
+                    M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' ha sido editada correctamente'},4000);
+                    refresh();
+                }, function(response) {
+                    M.toast({html: '<i class="material-icons">error_outline</i> Error editando la variable'},4000);
+                    refresh();
+                });
         }
+        
     };
     
     $scope.editData2 = function(data){
@@ -446,7 +451,7 @@ angular.module("TrabajoFinGrado").
             .put("../api/v1/tennis/" + data.variable, data)
             .then(function(response) {
                 console.log("Data " + data.variable + " edited!");
-                M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' se ha cancelado la edición de la variable'},4000);
+                M.toast({html: '<i class="material-icons">done</i> ' + 'se ha cancelado la edición de la variable ' + oldVariable },4000);
                 refresh();
             }, function(response) {
                 M.toast({html: '<i class="material-icons">error_outline</i> Error no controlado'},4000);
