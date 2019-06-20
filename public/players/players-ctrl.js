@@ -53,7 +53,7 @@ angular.module("TrabajoFinGrado").
         
         } else if(name1==name2) {
             
-            M.toast({html: '<i class="material-icons">error_outline</i> Ambos jugadores deben ser diferentes'},4000);
+            M.toast({html: '<i class="material-icons">error_outline</i> Los jugadores deben ser diferentes'},4000);
             
         } else {
             

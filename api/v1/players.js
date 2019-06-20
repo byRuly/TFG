@@ -315,46 +315,28 @@ app.get(BASE_API_PATH + "/players/loadDefault",function(request, response) {
 });
 
 
-// GET Collection [WITH INCLUDE]
+// GET Collection
 
 app.get(BASE_API_PATH + "/players", function (request, response) {
     
     console.log("INFO: New GET request to /players");
-    var include = request.query.include;
-
-    if (include) {
-        dbPlayers.find({include:include}).toArray(function(err, tennisplayers) {    // .skip(offset).limit(limit)
-            if (err) {
-                console.error('ERROR from database');
-                response.sendStatus(500); // internal server error
-            }else {
-                if (tennisplayers.length === 0) {
-                response.sendStatus(404);
-                return;
-            }
-            
-            response.send(tennisplayers);
-            console.log("INFO: Sending tennis players: " + JSON.stringify(tennisplayers, 2, null));
-            }
-        });
-        
-    } else {
-        dbPlayers.find({}).toArray(function(err, tennisplayers) {
+    
+    dbPlayers.find({}).toArray(function(err, tennisplayers) {
         if (err) {
             console.error('ERROR from database');
             response.sendStatus(500); // internal server error
             
         } else {
             if (tennisplayers.length === 0) {
-                response.sendStatus(404);
+                response.sendStatus(404); // not found
                 return;
             }
             
             response.send(tennisplayers);
             console.log("INFO: Sending tennis players: " + JSON.stringify(tennisplayers, 2, null));
-            }
-        });
-    }
+        }
+    });
+    
 });
 
 
@@ -415,7 +397,7 @@ app.post(BASE_API_PATH + "/players", function (request, response) {
                     });
 
                     if (tennisPlayerBeforeInsertion.length > 0) {
-                        console.log("WARNING: The player " + JSON.stringify(newTennisPlayer, 2, null) + " already extis, sending 409...");
+                        console.log("WARNING: The player " + JSON.stringify(newTennisPlayer, 2, null) + " already exists, sending 409...");
                         response.sendStatus(409); // conflict
                     } else {
                         console.log("INFO: Adding player " + JSON.stringify(newTennisPlayer, 2, null));

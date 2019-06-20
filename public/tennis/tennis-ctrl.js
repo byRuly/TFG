@@ -47,10 +47,8 @@ angular.module("TrabajoFinGrado").
                 switch (response.status) {
                     case 404:
                         $scope.allData = {};
-                        //M.toast({html: '<i class="material-icons">error_outline</i> No hay variables definidas'},4000);
                         break;
                     default:
-                        //M.toast({html: '<i class="material-icons">error_outline</i> Error obteniendo variables'},4000);
                         break;
                 }
             });
@@ -72,7 +70,6 @@ angular.module("TrabajoFinGrado").
                         M.toast({html: '<i class="material-icons">error_outline</i> No se han encontrado datos para el jugador 1'},4000);
                         break;
                     default:
-                        //M.toast({html: '<i class="material-icons">error_outline</i> Error obteniendo variables'},4000);
                         break;
                 }
             });
@@ -89,7 +86,6 @@ angular.module("TrabajoFinGrado").
                         M.toast({html: '<i class="material-icons">error_outline</i> No se han encontrado datos para el jugador 2'},4000);
                         break;
                     default:
-                        //M.toast({html: '<i class="material-icons">error_outline</i> Error obteniendo variables'},4000);
                         break;
                 }
             });
@@ -109,54 +105,14 @@ angular.module("TrabajoFinGrado").
                     switch (response.status) {
                         case 404:
                             $scope.dataToAdd = {};
-                            //M.toast({html: '<i class="material-icons">error_outline</i> No hay variables definidas'},4000);
                             break;
                             default:
-                            //M.toast({html: '<i class="material-icons">error_outline</i> Error obteniendo variables'},4000);
                             break;
                 }
-                //aux=0;
             });
         }
     };
-
-
-    $scope.addData = function() {
-        $http
-            .post("../api/v1/tennis", $scope.newData)
-            .then(function(response) {
-                console.log("Data added!");
-                M.toast({html: '<i class="material-icons">done</i> ' + $scope.newData.variable + ' ha sido añadida correctamente'},4000);
-                //Materialize.toast('<i class="material-icons">done</i> ' + $scope.newData.variable + ' has been added succesfully!', 4000);
-                refresh();
-            }, function(response) {
-                switch (response.status) {
-                    case 409:
-                        M.toast({html: '<i class="material-icons">error_outline</i> Esta variable ya existe'},4000);
-                        //Materialize.toast('<i class="material-icons">error_outline</i> This element already exist!', 4000);
-                        break;
-                    default:
-                        M.toast({html: '<i class="material-icons">error_outline</i> Error obteniendo variables'},4000);
-                        //Materialize.toast('<i class="material-icons">error_outline</i> Error getting data!', 4000);
-                        break;
-                }
-            });
-    };
-
     
-    $scope.deleteData = function(data) {
-        $http
-            .delete("../api/v1/tennis/" + data.variable)
-            .then(function(response) {
-                console.log("Data " + data.variable + " deleted!");
-                M.toast({html: '<i class="material-icons">done</i> ' + data.variable + ' ha sido borrada correctamente'},4000);
-                //Materialize.toast('<i class="material-icons">done</i> ' + data.variable + ' has been deleted succesfully!', 4000);
-                refresh();
-            }, function(response) {
-                M.toast({html: '<i class="material-icons">error_outline</i> Error borrando la variable'},4000);
-                //Materialize.toast('<i class="material-icons">error_outline</i> Error deleting data!', 4000);
-            });
-    };
 
     $scope.deleteAllData = function() {
         $http
@@ -164,58 +120,46 @@ angular.module("TrabajoFinGrado").
             .then(function(response) {
                 console.log("All data deleted!");
                 M.toast({html: '<i class="material-icons">done</i> Todas las variables se han borrado con éxito'},4000);
-                //Materialize.toast('<i class="material-icons">done</i> All data has been deleted succesfully!', 4000);
                 refresh();
             }, function(response) {
                 M.toast({html: '<i class="material-icons">error_outline</i> Error borrando las variables'},4000);
-                //Materialize.toast('<i class="material-icons">error_outline</i> Error deleting all data!', 4000);
             });
     };
 
     
     var loadDefault = $scope.loadDefault = function() {
-        //refresh();
-        if (//$scope.data.length == -1
-                aux==0) {
+        if (aux==0) {
             $http
                 .get("../api/v1/tennis/loadDefault")
                 .then(function(response) {
                     console.log("Initial data loaded");
                     M.toast({html: '<i class="material-icons">done</i> Variables por defecto cargadas correctamente'},4000);
-                    //Materialize.toast('<i class="material-icons">done</i> Loaded inital data succesfully!', 4000);
                     refresh();
                 }, function(response) {
                     M.toast({html: '<i class="material-icons">error_outline</i> Error cargando las variables por defecto'},4000);
-                    //Materialize.toast('<i class="material-icons">error_outline</i> Error adding initial data!', 4000);
                 });
         }
         else {
             M.toast({html: '<i class="material-icons">error_outline</i> Ya hay variables en la base de datos'},4000);
-            //Materialize.toast('<i class="material-icons">error_outline</i> There are already data in the DB', 4000);
             console.log("La lista de variables debe estar vacia");
         }
     };
     
     
     var loadEmpty = $scope.loadEmpty = function() {
-        //refresh();
-        if (//$scope.data.length == -1
-                aux==0) {
+        if (aux==0) {
             $http
                 .get("../api/v1/tennis/loadEmpty")
                 .then(function(response) {
-                    console.log("Initial data loaded");
-                    M.toast({html: '<i class="material-icons">done</i> Variables por defecto cargadas correctamente'},4000);
-                    //Materialize.toast('<i class="material-icons">done</i> Loaded inital data succesfully!', 4000);
+                    console.log("Initial data (empty) loaded");
+                    //M.toast({html: '<i class="material-icons">done</i> Variables por defecto cargadas correctamente'},4000);
                     refresh();
                 }, function(response) {
-                    M.toast({html: '<i class="material-icons">error_outline</i> Error cargando las variables por defecto'},4000);
-                    //Materialize.toast('<i class="material-icons">error_outline</i> Error adding initial data!', 4000);
+                    //M.toast({html: '<i class="material-icons">error_outline</i> Error cargando las variables por defecto'},4000);
                 });
         }
         else {
-            M.toast({html: '<i class="material-icons">error_outline</i> Ya hay variables en la base de datos'},4000);
-            //Materialize.toast('<i class="material-icons">error_outline</i> There are already data in the DB', 4000);
+            //M.toast({html: '<i class="material-icons">error_outline</i> Ya hay variables en la base de datos'},4000);
             console.log("La lista de variables debe estar vacia");
         }
     };
@@ -234,11 +178,9 @@ angular.module("TrabajoFinGrado").
             .then(function(response) {
                 console.log("Data " + data.variable + " edited!");
                 M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' ha sido añadida correctamente'},4000);
-                //Materialize.toast('<i class="material-icons">done</i> ' + oldCountry + ' has been edited succesfully!', 4000);
                 refresh();
             }, function(response) {
                 M.toast({html: '<i class="material-icons">error_outline</i> Error añadiendo la variable'},4000);
-                //Materialize.toast('<i class="material-icons">error_outline</i> Error editing data!', 4000);
                 refresh();
             });
     };
@@ -256,11 +198,9 @@ angular.module("TrabajoFinGrado").
             .then(function(response) {
                 console.log("Data " + data.variable + " edited!");
                 M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' ha sido borrada correctamente'},4000);
-                //Materialize.toast('<i class="material-icons">done</i> ' + oldCountry + ' has been edited succesfully!', 4000);
                 refresh();
             }, function(response) {
                 M.toast({html: '<i class="material-icons">error_outline</i> Error borrando la variable'},4000);
-                //Materialize.toast('<i class="material-icons">error_outline</i> Error editing data!', 4000);
                 refresh();
             });
     };
@@ -272,12 +212,10 @@ angular.module("TrabajoFinGrado").
             .then(function(response) {
                 console.log("All data deleted!");
                 M.toast({html: '<i class="material-icons">done</i> Todas las variables se han borrado con éxito'},4000);
-                //Materialize.toast('<i class="material-icons">done</i> All data has been deleted succesfully!', 4000);
                 aux = 0;
                 loadDefault();
             }, function(response) {
                 M.toast({html: '<i class="material-icons">error_outline</i> Error borrando las variables'},4000);
-                //Materialize.toast('<i class="material-icons">error_outline</i> Error deleting all data!', 4000);
             });
     };
     
@@ -288,12 +226,10 @@ angular.module("TrabajoFinGrado").
             .then(function(response) {
                 console.log("All data deleted!");
                 M.toast({html: '<i class="material-icons">done</i> Todas las variables se han borrado con éxito'},4000);
-                //Materialize.toast('<i class="material-icons">done</i> All data has been deleted succesfully!', 4000);
                 aux = 0;
                 loadEmpty();
             }, function(response) {
                 M.toast({html: '<i class="material-icons">error_outline</i> Error borrando las variables'},4000);
-                //Materialize.toast('<i class="material-icons">error_outline</i> Error deleting all data!', 4000);
             });
     };
     
@@ -307,8 +243,8 @@ angular.module("TrabajoFinGrado").
         var bonosuperficie = 0.08;
         var bonorival = 0.12;
         
-        console.log("Jugador1: " + jugador1.name);
-        console.log("Jugador2: " + jugador2.name);
+        console.log("Player1: " + jugador1.name);
+        console.log("Player2: " + jugador2.name);
         
         angular.forEach($scope.data, function (value, key) {
             
@@ -316,7 +252,7 @@ angular.module("TrabajoFinGrado").
         });
         
         if(pesos==100){
-            console.log("Pesos bien");
+            console.log("Weights=100, predicting...");
             
             var ace;
             var doublefault;
@@ -351,72 +287,57 @@ angular.module("TrabajoFinGrado").
                     case "aces":
                         ace = parseFloat(value.weight, 10) * parseFloat(jugador1.ace, 10) * parseFloat(value.include, 10) / 100;
                         ace2 = parseFloat(value.weight, 10) * parseFloat(jugador2.ace, 10) * parseFloat(value.include, 10) / 100;
-                        console.log("ace:" + ace);
                         break;
                     case "dobles faltas":
                         doublefault = parseFloat(value.weight, 10) * parseFloat(jugador1.doublefault, 10) * parseFloat(value.include, 10) / 100;
                         doublefault2 = parseFloat(value.weight, 10) * parseFloat(jugador2.doublefault, 10) * parseFloat(value.include, 10) / 100;
-                        console.log("doublefault:" + doublefault);
                         break;
                     case "primer servicio":
                         firstserve = parseFloat(value.weight, 10) * parseFloat(jugador1.firstserve, 10) * parseFloat(value.include, 10) / 100;
                         firstserve2 = parseFloat(value.weight, 10) * parseFloat(jugador2.firstserve, 10) * parseFloat(value.include, 10) / 100;
-                        console.log("firstserve:" + firstserve);
                         break;
                     case "puntos ganados primer servicio":
                         firstservewon = parseFloat(value.weight, 10) * parseFloat(jugador1.firstservewon, 10) * parseFloat(value.include, 10) / 100;
                         firstservewon2 = parseFloat(value.weight, 10) * parseFloat(jugador2.firstservewon, 10) * parseFloat(value.include, 10) / 100;
-                        console.log("firstservewon:" + firstservewon);
                         break;
                     case "puntos ganados al segundo servicio":
                         secondservewon = parseFloat(value.weight, 10) * parseFloat(jugador1.secondservewon, 10) * parseFloat(value.include, 10) / 100;
                         secondservewon2 = parseFloat(value.weight, 10) * parseFloat(jugador2.secondservewon, 10) * parseFloat(value.include, 10) / 100;
-                        console.log("secondservewon:" + secondservewon);
                         break;
                     case "puntos de break salvados":
                         breaksaved = parseFloat(value.weight, 10) * parseFloat(jugador1.breaksaved, 10) * parseFloat(value.include, 10) / 100;
                         breaksaved2 = parseFloat(value.weight, 10) * parseFloat(jugador2.breaksaved, 10) * parseFloat(value.include, 10) / 100;
-                        console.log("breaksaved:" +breaksaved);
                         break;
                     case "puntos ganados al servicio":
                         serveptswon = parseFloat(value.weight, 10) * parseFloat(jugador1.serveptswon, 10) * parseFloat(value.include, 10) / 100;
                         serveptswon2 = parseFloat(value.weight, 10) * parseFloat(jugador2.serveptswon, 10) * parseFloat(value.include, 10) / 100;
-                        console.log("serveptswon" + serveptswon);
                         break;
                     case "juegos ganados al servicio":
                         servegameswon = parseFloat(value.weight, 10) * parseFloat(jugador1.servegameswon, 10) * parseFloat(value.include, 10) / 100;
                         servegameswon2 = parseFloat(value.weight, 10) * parseFloat(jugador2.servegameswon, 10) * parseFloat(value.include, 10) / 100;
-                        console.log("servegameswon" + servegameswon);
                         break;
                     case "tie-breaks ganados":
                         tiebreakswon = parseFloat(value.weight, 10) * parseFloat(jugador1.tiebreakswon, 10) * parseFloat(value.include, 10) / 100;
                         tiebreakswon2 = parseFloat(value.weight, 10) * parseFloat(jugador2.tiebreakswon, 10) * parseFloat(value.include, 10) / 100;
-                        console.log("tiebreakswon" + tiebreakswon);
                         break;
                     case "sets ganados":
                         setswon = parseFloat(value.weight, 10) * parseFloat(jugador1.setswon, 10) * parseFloat(value.include, 10) / 100;
                         setswon2 = parseFloat(value.weight, 10) * parseFloat(jugador2.setswon, 10) * parseFloat(value.include, 10) / 100;
-                        console.log("setswon" + setswon);
                         break;
                     case "partidos ganados":
                         matcheswon = parseFloat(value.weight, 10) * parseFloat(jugador1.matcheswon, 10) * parseFloat(value.include, 10) / 100;
                         matcheswon2 = parseFloat(value.weight, 10) * parseFloat(jugador2.matcheswon, 10) * parseFloat(value.include, 10) / 100;
-                        console.log("matcheswon" + matcheswon);
                         break;
                     case "victorias rival superior":
                         upsetswon = parseFloat(value.weight, 10) * parseFloat(jugador1.upsetswon, 10) * parseFloat(value.include, 10) / 100;
                         upsetswon2 = parseFloat(value.weight, 10) * parseFloat(jugador2.upsetswon, 10) * parseFloat(value.include, 10) / 100;
-                        console.log("upsetswon" + upsetswon);
                         break;
                     case "derrotas rival inferior":
                         upsetsagainst = parseFloat(value.weight, 10) * parseFloat(jugador1.upsetsagainst, 10) * parseFloat(value.include, 10) / 100;
                         upsetsagainst2 = parseFloat(value.weight, 10) * parseFloat(jugador2.upsetsagainst, 10) * parseFloat(value.include, 10) / 100;
-                        console.log("upsetsagainst" + upsetsagainst);
                         break;
                 }
             });
-            
-
                 
             var score1 = ace + doublefault + firstserve + firstservewon + secondservewon + breaksaved + serveptswon 
                     + servegameswon + tiebreakswon + setswon + matcheswon + upsetswon + upsetsagainst;
@@ -428,25 +349,29 @@ angular.module("TrabajoFinGrado").
             var total1;
             var total2;
                 
-            console.log("Scope score1: " + score1);
-            console.log("Scope score2: " + score2);
+            console.log("Score Player1: " + score1);
+            console.log("Score Player2: " + score2);
             
             if (jugador1.surface == superficie.replace(/ /g,'')){
                 console.log(score1);
-                console.log("El jugador " + jugador1.name + " recibe bonificación de superficie favorita.");
+                console.log("The player " + jugador1.name + " has received favourite surface bonus.");
                 puntuacion1 = score1 + (score1 * bonosuperficie);
                 
             }else{
                 puntuacion1 = score1;
             }
             
+            console.log("Score (with surface) Player 1: " + puntuacion1);
+            
             if (jugador2.surface == superficie.replace(/ /g,'')){
                 console.log(score2);
-                console.log("El jugador " + jugador2.name + " recibe bonificación de superficie favorita.");
+                console.log("The player " + jugador2.name + " has received favourite surface bonus.");
                 puntuacion2 = score2 + (score2 * bonosuperficie); 
             }else{
                 puntuacion2 = score2;
             }
+            
+            console.log("Score (with surface) Player 2: " + puntuacion2);
             
             if (jugador1.h2h.includes(jugador2.name.replace(/ /g,''))){
                 console.log("El jugador " + jugador1.name + " recibe bonificación de enfrentamiento directo favorable");
@@ -462,8 +387,8 @@ angular.module("TrabajoFinGrado").
                 total2 = puntuacion2;
             }
             
-            console.log(total1);
-            console.log(total2);
+            console.log("Total Player1: " + total1);
+            console.log("Total Player2: " + total2);
             
             if (total1 > total2){
                 $scope.ganador = jugador1;
@@ -486,10 +411,6 @@ angular.module("TrabajoFinGrado").
         }
     };
     
-    function bucle(jugador1, jugador2){
-         
-    }
-    
     
     $scope.editData = function(data){
         
@@ -502,11 +423,28 @@ angular.module("TrabajoFinGrado").
             .then(function(response) {
                 console.log("Data " + data.variable + " edited!");
                 M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' ha sido editada correctamente'},4000);
-                //Materialize.toast('<i class="material-icons">done</i> ' + oldCountry + ' has been edited succesfully!', 4000);
                 refresh();
             }, function(response) {
-                M.toast({html: '<i class="material-icons">error_outline</i> Error borrando la variable'},4000);
-                //Materialize.toast('<i class="material-icons">error_outline</i> Error editing data!', 4000);
+                M.toast({html: '<i class="material-icons">error_outline</i> Error editando la variable'},4000);
+                refresh();
+            });
+    };
+    
+    $scope.editData2 = function(data){
+        
+        var oldVariable = data.variable;
+        delete data._id;
+        delete data.oldVariable;
+        data.weight = $scope.oldWeight;
+        
+        $http
+            .put("../api/v1/tennis/" + data.variable, data)
+            .then(function(response) {
+                console.log("Data " + data.variable + " edited!");
+                M.toast({html: '<i class="material-icons">done</i> ' + oldVariable + ' se ha cancelado la edición de la variable'},4000);
+                refresh();
+            }, function(response) {
+                M.toast({html: '<i class="material-icons">error_outline</i> Error no controlado'},4000);
                 refresh();
             });
     };
@@ -519,9 +457,10 @@ angular.module("TrabajoFinGrado").
     
     //c07666bd5b
     $scope.editDataModal = function(data) {
+        $scope.oldWeight = data.weight;
         data["oldVariable"] = data.variable;
         $scope.editDataUnit = data;
-        $('#editModal2').modal('open');
+        $('#editModal').modal('open');
     };
     
     refresh();
@@ -535,6 +474,5 @@ angular.module("TrabajoFinGrado").
                 refresh();
             }
         });
-        //$(".button-collapse").sideNav();
     });
 }]);

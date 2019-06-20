@@ -121,7 +121,7 @@ app.get(BASE_API_PATH + "/tennis/loadDefault",function(request, response) {
 });
 
 
-//Load Empty Data
+//Load Initial Data (include=0)
 
 app.get(BASE_API_PATH + "/tennis/loadEmpty",function(request, response) {
     
@@ -237,31 +237,6 @@ app.get(BASE_API_PATH + "/tennis/loadEmpty",function(request, response) {
     });
 });
 
-/*
-// GET Collection [OLD]
-
-app.get(BASE_API_PATH + "/tennis", function (request, response) {
-    
-    console.log("INFO: New GET request to /tennis");
-    
-    dbTennis.find({}).toArray(function(err, tennisvariables) {
-        if (err) {
-            console.error('ERROR from database');
-            response.sendStatus(500); // internal server error
-            
-        } else {
-            if (tennisvariables.length === 0) {
-                response.sendStatus(404);
-                return;
-            }
-            
-            response.send(tennisvariables);
-            console.log("INFO: Sending tennis variables: " + JSON.stringify(tennisvariables, 2, null));
-            }
-    });
-});
-*/
-
 
 // GET Collection [WITH INCLUDE]
 
@@ -271,13 +246,13 @@ app.get(BASE_API_PATH + "/tennis", function (request, response) {
     var include = request.query.include;
 
     if (include) {
-        dbTennis.find({include:include}).toArray(function(err, tennisvariables) {    // .skip(offset).limit(limit)
+        dbTennis.find({include:include}).toArray(function(err, tennisvariables) {
             if (err) {
                 console.error('ERROR from database');
                 response.sendStatus(500); // internal server error
             }else {
                 if (tennisvariables.length === 0) {
-                response.sendStatus(404);
+                response.sendStatus(404); // not found
                 return;
             }
             
@@ -294,7 +269,7 @@ app.get(BASE_API_PATH + "/tennis", function (request, response) {
             
         } else {
             if (tennisvariables.length === 0) {
-                response.sendStatus(404);
+                response.sendStatus(404); // not found
                 return;
             }
             
@@ -334,7 +309,7 @@ app.get(BASE_API_PATH + "/tennis/:variable", function (request, response) {
                     response.sendStatus(404); // not found
                 }
         });
-}
+    }
     
 }});
 
@@ -492,30 +467,4 @@ app.delete(BASE_API_PATH + "/tennis", function (request, response) {
     });
 });
 
-/*
-// Proxy
-
-app.get("/proxyRaul", (req, res) => {
-    var http = require('http');
-    
-    var options = {
-        host:'sos1617-06.herokuapp.com',   
-        path:'/api/v1/education?apikey=secret' 
-    };
-    
-    callback = function(response){
-        var str = '';
-        
-        response.on('data', function(chunk){
-           str += chunk; 
-        });
-        
-        response.on('end', function(){
-           res.send(str); 
-        });
-    };
-    
-    http.request(options, callback).end();
-});
-*/
 };

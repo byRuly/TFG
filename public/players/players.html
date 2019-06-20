@@ -1,6 +1,4 @@
 <header>
-    <!--<h3 style="text-align:center">Tenis</h3>-->
-    <!--<img class="center-align" src="/resources/bannerbasket.jpg" style="align:center">-->
     <div align="center"><img class="responsive-img" src="/resources/banner.png" alt="banner" align="center"></div>
 </header>
 <main>
@@ -43,11 +41,12 @@
         </br>
         
         <div class="container" align="center">
-            <!--<button class="btn-large waves-effect waves-light green darken-1 modal-trigger" ng-click="validatePlayers(newPlayer1.name,newPlayer2.name,surface.name)">Comenzar<i class="material-icons">play_circle_outline</i></button>-->
             <button style="height: 48px;	width: 187px;	border-radius: 24px;	background: linear-gradient(90deg, #BAC621 0.05%, #007935 100%); text-align: center; color: white; font-size: 1.30rem;" ng-click="validatePlayers(newPlayer1.name,newPlayer2.name,surface.name)">
                 Comenzar
             </button>
-            <button ng-click="deletePlayers()" style="display:none;"></button>
+        </div>
+        <div class="container" align="center" style="display:none;">
+            <button ng-click="deletePlayers()"></button>
         </div>
     </div>
 

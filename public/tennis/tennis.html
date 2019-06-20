@@ -1,6 +1,4 @@
 <header>
-    <!--<h3 style="text-align:center">Tenis</h3>-->
-    <!--<img class="center-align" src="/resources/bannerbasket.jpg" style="align:center">-->
     <div align="center"><img class="responsive-img" src="/resources/banner.png" alt="banner" align="center"></div>
 </header>
 <main>
@@ -14,7 +12,6 @@
                 <img class="responsive-img" src="/resources/flags/{{dataUnit.nationality}}.png" alt="Bandera Jugador 1" hspace=10 style="border: 1px solid #000000; border-radius:50%;" />
             </div>
             
-            <!--<img class="responsive-img" src="/resources/vs.jpg" alt="versus" width=20 height=20 hspace=50 />-->
             <h5 style="display:inline-block; margin-left:70px;margin-right:70px;">VS</h5>
             
             <div class="col s3" style="display:inline-block; font-size:40px;" ng-repeat="dataUnit in player2">
@@ -27,7 +24,7 @@
         
         
         <div class="container">
-            <table class="highlight"><!--class="striped highlight"-->
+            <table class="highlight">
                 <thead>
                     <tr>
                         <th style="text-align:center" width="14%">Variable</th>
@@ -43,15 +40,12 @@
                         <td style="text-align:center">{{dataUnit.recommendedweight}}</td>
                         <td style="text-align:center">
                             <button class="btn-floating waves-effect waves-light yellow darken-1 modal-trigger" ng-click="editDataModal(dataUnit)"><i class="material-icons">edit</i></button>
-                            <!--<button class="btn-floating waves-effect waves-light yellow darken-1 modal-trigger" data-target="editModal"><i class="material-icons">create</i></button>-->
-                            <!--<button class="btn-floating waves-effect waves-light red" ng-click="deleteData(dataUnit)"><i class="material-icons">delete</i></button>-->
                             <button class="btn-floating waves-effect waves-light red" ng-click="editDataDelete(dataUnit)"><i class="material-icons">delete</i></button>
                         </td>
                     </tr>
                     
                     <tr class="grey lighten-2">
                         <td>
-                            
                             <input list="options" name="newVariable" ng-model="newData.variable" ng-change="updateNewRecWeight(newData.variable)">
                             <datalist id="options">
                                 <option ng-repeat="dataUnit in allData" value={{dataUnit.variable}}>{{dataUnit.variable}}</option>
@@ -60,7 +54,6 @@
                         <td><input class="form-control" ng-model="newData.weight" style="text-align:center"/></td>
                         <td>
                             <div style="text-align:center" ng-model="newData.recommendedweight">{{dataToAdd[0].recommendedweight}}</div>
-                            <!--<div style="text-align:center" ng-repeat="dataUnit in dataToAdd" ng-model="newData.recommendedweight">{{dataUnit.recommendedweight}}</div>-->
                         </td>
                         <td style="text-align:center"><button class="btn waves-effect waves-light blue darken-3" ng-click="editDataAdd(newData)" style="border-radius: 50px; width:80px"><i class="material-icons">add</i></button></td>
                     </tr>
@@ -72,26 +65,22 @@
                 <div class="row"></div>
                 <div class="row">
                     <div class="col s3">
-                        <!--<button class="btn waves-effect waves-light orange darken-1" ng-click="return()">Atrás<i class="material-icons left">autorenew</i></button>-->
                         <button style="height: 48px;	width: 150px;	margin-top:11px; border-radius: 24px;	background: linear-gradient(90deg, #FFDC00 0.05%, #FF8000 100%); text-align: center; color: white; font-size: 1.30rem;" ng-click="return()">Atrás<i class="material-icons left">undo</i></button>
                     </div>
                     <div class="col s3">
-                        <!--<button class="btn waves-effect waves-light red darken-2" ng-click="clear()">Limpiar<i class="material-icons left">delete_forever</i></button>-->
                         <button style="height: 48px;	width: 150px;	margin-top:11px; border-radius: 24px;	background: linear-gradient(90deg, #FF4900 0.05%, #C60000 100%); text-align: center; color: white; font-size: 1.30rem;" ng-click="clear()">Limpiar<i class="material-icons left">delete_forever</i></button>
                     </div>
                     <div class="col s3">
-                        <!--<button class="btn waves-effect waves-light green darken-1" ng-click="reset()">Reiniciar<i class="material-icons left">autorenew</i></button>-->
                         <button style="height: 48px;	width: 150px;	margin-top:11px; margin-right:80px; border-radius: 24px;	background: linear-gradient(90deg, #00C9FF 0.05%, #0036FF 100%); text-align: center; color: white; font-size: 1.30rem;" ng-click="reset()">Reiniciar<i class="material-icons left">autorenew</i></button>
                     </div>
                     <div class="col s3">
-                        <!--<button class="btn waves-effect waves-light green darken-1" ng-click="predict()">Predecir<i class="material-icons left">autorenew</i></button>-->
                         <button style="height: 70px;	width: 170px;   margin-left:80px; border-radius: 24px;	background: linear-gradient(90deg, #BAC621 0.05%, #007935 100%); text-align: center; color: white; font-size: 1.60rem;" ng-click="predict()">Predecir</button>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div id="editModal2" class="modal">
+        <div id="editModal" class="modal">
             <div class="modal-content" style="text-align:center;">
                 <br/>
                 <h4>Editar variable: {{editDataUnit.oldVariable}}</h4>
@@ -115,7 +104,7 @@
                 <button class="modal-close waves-effect waves-green btn-flat" ng-click="editData(editDataUnit)">
                         OK
                 </button>
-                <button class="modal-close waves-effect waves-red btn-flat">
+                <button class="modal-close waves-effect waves-red btn-flat" ng-click="editData2(editDataUnit)">
                         Cancelar
                 </button>
             </div>
@@ -137,11 +126,5 @@
                 </button>
             </div>
         </div>
-        
-        
     </div>
-
-    
-
-    <!--</div>-->
 </main>
