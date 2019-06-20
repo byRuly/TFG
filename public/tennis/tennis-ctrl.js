@@ -305,18 +305,18 @@ angular.module("TrabajoFinGrado").
         var jugador2 = $scope.player2[0];
         var superficie = $routeParams.surface;
         var bonosuperficie = 0.08;
-        var bonorival = 0.11;
+        var bonorival = 0.12;
         
         console.log("Jugador1: " + jugador1.name);
         console.log("Jugador2: " + jugador2.name);
         
         angular.forEach($scope.data, function (value, key) {
             
-            pesos += parseInt(value.weight, 10);
+            pesos += parseFloat(value.weight, 10);
         });
         
         if(pesos==100){
-            console.log("Bien");
+            console.log("Pesos bien");
             
             var ace;
             var doublefault;
@@ -349,98 +349,135 @@ angular.module("TrabajoFinGrado").
             
                 switch(value.variable){
                     case "aces":
-                        ace = parseInt(value.weight, 10) * parseInt(jugador1.ace, 10) * parseInt(value.include, 10) / 100;
-                        ace2 = parseInt(value.weight, 10) * parseInt(jugador2.ace, 10) * parseInt(value.include, 10) / 100;
+                        ace = parseFloat(value.weight, 10) * parseFloat(jugador1.ace, 10) * parseFloat(value.include, 10) / 100;
+                        ace2 = parseFloat(value.weight, 10) * parseFloat(jugador2.ace, 10) * parseFloat(value.include, 10) / 100;
+                        console.log("ace:" + ace);
                         break;
                     case "dobles faltas":
-                        doublefault = parseInt(value.weight, 10) * parseInt(jugador1.doublefault, 10) * parseInt(value.include, 10) / 100;
-                        doublefault2 = parseInt(value.weight, 10) * parseInt(jugador2.doublefault, 10) * parseInt(value.include, 10) / 100;
+                        doublefault = parseFloat(value.weight, 10) * parseFloat(jugador1.doublefault, 10) * parseFloat(value.include, 10) / 100;
+                        doublefault2 = parseFloat(value.weight, 10) * parseFloat(jugador2.doublefault, 10) * parseFloat(value.include, 10) / 100;
+                        console.log("doublefault:" + doublefault);
                         break;
                     case "primer servicio":
-                        firstserve = parseInt(value.weight, 10) * parseInt(jugador1.firstserve, 10) * parseInt(value.include, 10) / 100;
-                        firstserve2 = parseInt(value.weight, 10) * parseInt(jugador2.firstserve, 10) * parseInt(value.include, 10) / 100;
+                        firstserve = parseFloat(value.weight, 10) * parseFloat(jugador1.firstserve, 10) * parseFloat(value.include, 10) / 100;
+                        firstserve2 = parseFloat(value.weight, 10) * parseFloat(jugador2.firstserve, 10) * parseFloat(value.include, 10) / 100;
+                        console.log("firstserve:" + firstserve);
                         break;
                     case "puntos ganados primer servicio":
-                        firstservewon = parseInt(value.weight, 10) * parseInt(jugador1.firstservewon, 10) * parseInt(value.include, 10) / 100;
-                        firstservewon2 = parseInt(value.weight, 10) * parseInt(jugador2.firstservewon, 10) * parseInt(value.include, 10) / 100;
+                        firstservewon = parseFloat(value.weight, 10) * parseFloat(jugador1.firstservewon, 10) * parseFloat(value.include, 10) / 100;
+                        firstservewon2 = parseFloat(value.weight, 10) * parseFloat(jugador2.firstservewon, 10) * parseFloat(value.include, 10) / 100;
+                        console.log("firstservewon:" + firstservewon);
                         break;
                     case "puntos ganados al segundo servicio":
-                        secondservewon = parseInt(value.weight, 10) * parseInt(jugador1.secondservewon, 10) * parseInt(value.include, 10) / 100;
-                        secondservewon2 = parseInt(value.weight, 10) * parseInt(jugador2.secondservewon, 10) * parseInt(value.include, 10) / 100;
+                        secondservewon = parseFloat(value.weight, 10) * parseFloat(jugador1.secondservewon, 10) * parseFloat(value.include, 10) / 100;
+                        secondservewon2 = parseFloat(value.weight, 10) * parseFloat(jugador2.secondservewon, 10) * parseFloat(value.include, 10) / 100;
+                        console.log("secondservewon:" + secondservewon);
                         break;
                     case "puntos de break salvados":
-                        breaksaved = parseInt(value.weight, 10) * parseInt(jugador1.breaksaved, 10) * parseInt(value.include, 10) / 100;
-                        breaksaved2 = parseInt(value.weight, 10) * parseInt(jugador2.breaksaved, 10) * parseInt(value.include, 10) / 100;
+                        breaksaved = parseFloat(value.weight, 10) * parseFloat(jugador1.breaksaved, 10) * parseFloat(value.include, 10) / 100;
+                        breaksaved2 = parseFloat(value.weight, 10) * parseFloat(jugador2.breaksaved, 10) * parseFloat(value.include, 10) / 100;
+                        console.log("breaksaved:" +breaksaved);
                         break;
                     case "puntos ganados al servicio":
-                        serveptswon = parseInt(value.weight, 10) * parseInt(jugador1.serveptswon, 10) * parseInt(value.include, 10) / 100;
-                        serveptswon2 = parseInt(value.weight, 10) * parseInt(jugador2.serveptswon, 10) * parseInt(value.include, 10) / 100;
+                        serveptswon = parseFloat(value.weight, 10) * parseFloat(jugador1.serveptswon, 10) * parseFloat(value.include, 10) / 100;
+                        serveptswon2 = parseFloat(value.weight, 10) * parseFloat(jugador2.serveptswon, 10) * parseFloat(value.include, 10) / 100;
+                        console.log("serveptswon" + serveptswon);
                         break;
                     case "juegos ganados al servicio":
-                        servegameswon = parseInt(value.weight, 10) * parseInt(jugador1.servegameswon, 10) * parseInt(value.include, 10) / 100;
-                        servegameswon2 = parseInt(value.weight, 10) * parseInt(jugador2.servegameswon, 10) * parseInt(value.include, 10) / 100;
+                        servegameswon = parseFloat(value.weight, 10) * parseFloat(jugador1.servegameswon, 10) * parseFloat(value.include, 10) / 100;
+                        servegameswon2 = parseFloat(value.weight, 10) * parseFloat(jugador2.servegameswon, 10) * parseFloat(value.include, 10) / 100;
+                        console.log("servegameswon" + servegameswon);
                         break;
                     case "tie-breaks ganados":
-                        tiebreakswon = parseInt(value.weight, 10) * parseInt(jugador1.tiebreakswon, 10) * parseInt(value.include, 10) / 100;
-                        tiebreakswon2 = parseInt(value.weight, 10) * parseInt(jugador2.tiebreakswon, 10) * parseInt(value.include, 10) / 100;
+                        tiebreakswon = parseFloat(value.weight, 10) * parseFloat(jugador1.tiebreakswon, 10) * parseFloat(value.include, 10) / 100;
+                        tiebreakswon2 = parseFloat(value.weight, 10) * parseFloat(jugador2.tiebreakswon, 10) * parseFloat(value.include, 10) / 100;
+                        console.log("tiebreakswon" + tiebreakswon);
                         break;
                     case "sets ganados":
-                        setswon = parseInt(value.weight, 10) * parseInt(jugador1.setswon, 10) * parseInt(value.include, 10) / 100;
-                        setswon2 = parseInt(value.weight, 10) * parseInt(jugador2.setswon, 10) * parseInt(value.include, 10) / 100;
+                        setswon = parseFloat(value.weight, 10) * parseFloat(jugador1.setswon, 10) * parseFloat(value.include, 10) / 100;
+                        setswon2 = parseFloat(value.weight, 10) * parseFloat(jugador2.setswon, 10) * parseFloat(value.include, 10) / 100;
+                        console.log("setswon" + setswon);
                         break;
                     case "partidos ganados":
-                        matcheswon = parseInt(value.weight, 10) * parseInt(jugador1.matcheswon, 10) * parseInt(value.include, 10) / 100;
-                        matcheswon2 = parseInt(value.weight, 10) * parseInt(jugador2.matcheswon, 10) * parseInt(value.include, 10) / 100;
+                        matcheswon = parseFloat(value.weight, 10) * parseFloat(jugador1.matcheswon, 10) * parseFloat(value.include, 10) / 100;
+                        matcheswon2 = parseFloat(value.weight, 10) * parseFloat(jugador2.matcheswon, 10) * parseFloat(value.include, 10) / 100;
+                        console.log("matcheswon" + matcheswon);
                         break;
                     case "victorias rival superior":
-                        upsetswon = parseInt(value.weight, 10) * parseInt(jugador1.upsetswon, 10) * parseInt(value.include, 10) / 100;
-                        upsetswon2 = parseInt(value.weight, 10) * parseInt(jugador2.upsetswon, 10) * parseInt(value.include, 10) / 100;
+                        upsetswon = parseFloat(value.weight, 10) * parseFloat(jugador1.upsetswon, 10) * parseFloat(value.include, 10) / 100;
+                        upsetswon2 = parseFloat(value.weight, 10) * parseFloat(jugador2.upsetswon, 10) * parseFloat(value.include, 10) / 100;
+                        console.log("upsetswon" + upsetswon);
                         break;
                     case "derrotas rival inferior":
-                        upsetsagainst = parseInt(value.weight, 10) * parseInt(jugador1.upsetsagainst, 10) * parseInt(value.include, 10) / 100;
-                        upsetsagainst2 = parseInt(value.weight, 10) * parseInt(jugador2.upsetsagainst, 10) * parseInt(value.include, 10) / 100;
+                        upsetsagainst = parseFloat(value.weight, 10) * parseFloat(jugador1.upsetsagainst, 10) * parseFloat(value.include, 10) / 100;
+                        upsetsagainst2 = parseFloat(value.weight, 10) * parseFloat(jugador2.upsetsagainst, 10) * parseFloat(value.include, 10) / 100;
+                        console.log("upsetsagainst" + upsetsagainst);
                         break;
                 }
             });
             
-            var puntuacion1 = ace + doublefault + firstserve + firstservewon + secondservewon + breaksaved + serveptswon + servegameswon + tiebreakswon + setswon + matcheswon + upsetswon + upsetsagainst;
-            var puntuacion2 = ace2 + doublefault2 + firstserve2 + firstservewon2 + secondservewon2 + breaksaved2 + serveptswon2 + servegameswon2 + tiebreakswon2 + setswon2 + matcheswon2 + upsetswon2 + upsetsagainst2;
+
+                
+            var score1 = ace + doublefault + firstserve + firstservewon + secondservewon + breaksaved + serveptswon 
+                    + servegameswon + tiebreakswon + setswon + matcheswon + upsetswon + upsetsagainst;
+            var score2 = ace2 + doublefault2 + firstserve2 + firstservewon2 + secondservewon2 + breaksaved2 + serveptswon2 +
+                    servegameswon2 + tiebreakswon2 + setswon2 + matcheswon2 + upsetswon2 + upsetsagainst2;
+            
+            var puntuacion1;
+            var puntuacion2;
+            var total1;
+            var total2;
+                
+            console.log("Scope score1: " + score1);
+            console.log("Scope score2: " + score2);
             
             if (jugador1.surface == superficie.replace(/ /g,'')){
+                console.log(score1);
                 console.log("El jugador " + jugador1.name + " recibe bonificación de superficie favorita.");
-                puntuacion1 = puntuacion1 + (puntuacion1 * bonosuperficie);
+                puntuacion1 = score1 + (score1 * bonosuperficie);
                 
+            }else{
+                puntuacion1 = score1;
             }
+            
             if (jugador2.surface == superficie.replace(/ /g,'')){
+                console.log(score2);
                 console.log("El jugador " + jugador2.name + " recibe bonificación de superficie favorita.");
-                puntuacion2 = puntuacion2 + (puntuacion2 * bonosuperficie); 
+                puntuacion2 = score2 + (score2 * bonosuperficie); 
+            }else{
+                puntuacion2 = score2;
             }
             
             if (jugador1.h2h.includes(jugador2.name.replace(/ /g,''))){
                 console.log("El jugador " + jugador1.name + " recibe bonificación de enfrentamiento directo favorable");
-                puntuacion1 = puntuacion1 + (puntuacion1 * bonorival);
+                total1 = puntuacion1 + (score1 * bonorival);
+                total2 = puntuacion2;
                 
             } else if (jugador2.h2h.includes(jugador1.name.replace(/ /g,''))){
                 console.log("El jugador " + jugador2.name + " recibe bonificación de enfrentamiento directo favorable");
-                puntuacion2 = puntuacion2 + (puntuacion2 * bonorival); 
+                total2 = puntuacion2 + (score2 * bonorival);
+                total1 = puntuacion1;
+            }else{
+                total1 = puntuacion1;
+                total2 = puntuacion2;
             }
             
-            console.log(puntuacion1);
-            console.log(puntuacion2);
+            console.log(total1);
+            console.log(total2);
             
-            if (puntuacion1 > puntuacion2){
+            if (total1 > total2){
                 $scope.ganador = jugador1;
                 $scope.ganadorNS = jugador1.name.replace(/ /g,'');
-                $scope.diferencia = ((puntuacion1 - puntuacion2) * 100 / puntuacion2).toFixed(3);
-                $scope.puntuacionmayor = puntuacion1.toFixed(3);
-                $scope.puntuacionmenor = puntuacion2.toFixed(3);
+                $scope.diferencia = ((total1 - total2) * 100 / total2).toFixed(3);
+                $scope.puntuacionmayor = total1.toFixed(3);
+                $scope.puntuacionmenor = total2.toFixed(3);
                 $('#winnerModal').modal('open');
             }else{
                 $scope.ganador = jugador2;
                 $scope.ganadorNS = jugador2.name.replace(/ /g,'');
-                $scope.diferencia = ((puntuacion2 - puntuacion1) * 100 / puntuacion1).toFixed(3);
-                $scope.puntuacionmenor = puntuacion1.toFixed(3);
-                $scope.puntuacionmayor = puntuacion2.toFixed(3);
+                $scope.diferencia = ((total2 - total1) * 100 / total1).toFixed(3);
+                $scope.puntuacionmenor = total1.toFixed(3);
+                $scope.puntuacionmayor = total2.toFixed(3);
                 $('#winnerModal').modal('open');
             }
             
@@ -448,6 +485,10 @@ angular.module("TrabajoFinGrado").
             M.toast({html: '<i class="material-icons">error_outline</i> Los pesos de las variables deben sumar 100'},4000);
         }
     };
+    
+    function bucle(jugador1, jugador2){
+         
+    }
     
     
     $scope.editData = function(data){
