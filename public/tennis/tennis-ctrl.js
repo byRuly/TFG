@@ -10,7 +10,6 @@ angular.module("TrabajoFinGrado").
 
 
     $scope.data = {};
-    
     var refresh = $scope.refresh = function(){
         
         $http
@@ -57,6 +56,14 @@ angular.module("TrabajoFinGrado").
     };
     
     var refresh3 = $scope.refresh3 = function(){
+        
+        var surface = $routeParams.surface;
+        
+        if(surface == "none"){
+            $scope.superficie = "No definida";
+        } else {
+            $scope.superficie = surface;
+        }
         
         $http
             .get("../api/v1/players/" + $routeParams.name1)
