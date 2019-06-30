@@ -22,7 +22,7 @@ app.get(BASE_API_PATH + "/tennis/loadDefault",function(request, response) {
                 "variable": "aces",
                 "weight": "25",
                 "recommendedweight": "Medio",
-                "include":"0",
+                "include":"1",
                 "positive":"1"
             },
             {
@@ -36,7 +36,7 @@ app.get(BASE_API_PATH + "/tennis/loadDefault",function(request, response) {
                 "variable": "primer servicio",
                 "weight": "25",
                 "recommendedweight": "Alto",
-                "include":"0",
+                "include":"1",
                 "positive":"1"
             },
             {
@@ -50,7 +50,7 @@ app.get(BASE_API_PATH + "/tennis/loadDefault",function(request, response) {
                 "variable": "puntos ganados al segundo servicio",
                 "weight": "25",
                 "recommendedweight": "Alto",
-                "include":"0",
+                "include":"1",
                 "positive":"1"
             },
             {
@@ -78,35 +78,35 @@ app.get(BASE_API_PATH + "/tennis/loadDefault",function(request, response) {
                 "variable": "tie-breaks ganados",
                 "weight": "25",
                 "recommendedweight": "Alto",
-                "include":"0",
+                "include":"1",
                 "positive":"1"
             },
             {
                 "variable": "sets ganados",
                 "weight": "10",
                 "recommendedweight": "Bajo",
-                "include":"1",
+                "include":"0",
                 "positive":"1"
             },
             {
                 "variable": "partidos ganados",
                 "weight": "25",
                 "recommendedweight": "Medio",
-                "include":"0",
+                "include":"1",
                 "positive":"1"
             },
             {
                 "variable": "victorias rival superior",
                 "weight": "25",
                 "recommendedweight": "Alto",
-                "include":"0",
+                "include":"1",
                 "positive":"1"
             },
             {
                 "variable": "derrotas rival inferior",
                 "weight": "25",
                 "recommendedweight": "Alto",
-                "include":"0",
+                "include":"1",
                 "positive":"-1"
             }
             ];
