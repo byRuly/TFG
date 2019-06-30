@@ -20,42 +20,42 @@ app.get(BASE_API_PATH + "/tennis/loadDefault",function(request, response) {
 
             var tennisvariables = [{
                 "variable": "aces",
-                "weight": "25",
+                "weight": "10",
                 "recommendedweight": "Medio",
                 "include":"1",
                 "positive":"1"
             },
             {
                 "variable": "dobles faltas",
-                "weight": "25",
+                "weight": "10",
                 "recommendedweight": "Medio",
                 "include":"1",
                 "positive":"-1"
             },
             {
                 "variable": "primer servicio",
-                "weight": "25",
+                "weight": "10",
                 "recommendedweight": "Alto",
                 "include":"1",
                 "positive":"1"
             },
             {
                 "variable": "puntos ganados primer servicio",
-                "weight": "25",
+                "weight": "10",
                 "recommendedweight": "Medio",
                 "include":"1",
                 "positive":"1"
             },
             {
                 "variable": "puntos ganados al segundo servicio",
-                "weight": "25",
+                "weight": "10",
                 "recommendedweight": "Alto",
                 "include":"1",
                 "positive":"1"
             },
             {
                 "variable": "puntos de break salvados",
-                "weight": "40",
+                "weight": "10",
                 "recommendedweight": "Alto",
                 "include":"1",
                 "positive":"1"
@@ -76,7 +76,7 @@ app.get(BASE_API_PATH + "/tennis/loadDefault",function(request, response) {
             },
             {
                 "variable": "tie-breaks ganados",
-                "weight": "25",
+                "weight": "10",
                 "recommendedweight": "Alto",
                 "include":"1",
                 "positive":"1"
@@ -90,21 +90,21 @@ app.get(BASE_API_PATH + "/tennis/loadDefault",function(request, response) {
             },
             {
                 "variable": "partidos ganados",
-                "weight": "25",
+                "weight": "10",
                 "recommendedweight": "Medio",
                 "include":"1",
                 "positive":"1"
             },
             {
                 "variable": "victorias rival superior",
-                "weight": "25",
+                "weight": "10",
                 "recommendedweight": "Alto",
                 "include":"1",
                 "positive":"1"
             },
             {
                 "variable": "derrotas rival inferior",
-                "weight": "25",
+                "weight": "10",
                 "recommendedweight": "Alto",
                 "include":"1",
                 "positive":"-1"
