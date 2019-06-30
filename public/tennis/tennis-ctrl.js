@@ -74,7 +74,9 @@ angular.module("TrabajoFinGrado").
                 switch (response.status) {
                     case 404:
                         $scope.player1 = {};
-                        M.toast({html: '<i class="material-icons">error_outline</i> No se han encontrado datos para el jugador 1'},4000);
+                        //M.toast({html: '<i class="material-icons">error_outline</i> No se han encontrado datos para el jugador 1'},4000);
+                        $scope.error = "Jugador 1";
+                        $('#errorModal').modal('open');
                         break;
                     default:
                         break;
@@ -90,7 +92,9 @@ angular.module("TrabajoFinGrado").
                 switch (response.status) {
                     case 404:
                         $scope.player2 = {};
-                        M.toast({html: '<i class="material-icons">error_outline</i> No se han encontrado datos para el jugador 2'},4000);
+                        //M.toast({html: '<i class="material-icons">error_outline</i> No se han encontrado datos para el jugador 2'},4000);
+                        $scope.error = "Jugador 2";
+                        $('#errorModal').modal('open');
                         break;
                     default:
                         break;

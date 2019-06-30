@@ -126,5 +126,18 @@
                 </button>
             </div>
         </div>
+        
+        <div id="errorModal" class="modal">
+            <div class="modal-content" style="text-align:center;">
+                <h4>¡Error!</h4>
+                <h5>No se han encontrado datos del {{error}}</h5>
+                <h5>Vuelva a la pantalla de selección de jugadores</h5>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-close waves-effect waves-red btn-flat" ng-click="return()">
+                        Volver
+                </button>
+            </div>
+        </div>
     </div>
 </main>
